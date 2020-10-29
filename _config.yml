@@ -25,7 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Las publico no con ánimo de ensañar, sino de compartir. Como habrá poco contenido original, cada sección tendrá su propia seccin
   de referencias, en la que indicaré las fuentes originales de las que me serví para crearla.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://github-dabiz.github.io/ratondebiblioteca/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
