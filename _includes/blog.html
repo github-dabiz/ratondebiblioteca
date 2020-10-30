@@ -6,7 +6,7 @@
                 {% for post in site.posts %}
                 <!-- Blog Post -->
                 <h2>
-                    <a href="{{ post.url }}">{{ post.title }}</a>
+                    <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                 </h2>
 
                 <p class="lead">
