@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+{%- assign category = include.taxonomy -%}
+{%- assign entries = include.postlist -%}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>{{ site.title | xml_escape }} - {{ category }}</title>
+		<description>Posts in {{ category }} category</description>
+		<link href="{{ site.url }}/{{ category }}"/>
+		<atom:link href="{{ site.url }}/feed.{{ category }}.xml" rel="self" type="application/rss+xml" />
+        <category term="{{ category }}"/>
+		{% for post in entries limit:40 %}
+			<item>
+				<title type="html"><![CDATA[{{ post.title | cdata_escape }}]]></title>
+				<link rel="alternate" type="text/html" href="{{ site.url }}{{ post.url }}" />				
+				{% if post.excerpt %}<description>{{ post.excerpt | xml_escape }}</description>{% else %}<description>{{ post.content | xml_escape }}</description>{% endif %}
+				{% if post.modified %}<updated>{{ post.modified | to_xmlschema }}</updated>
+				<published>{{ post.date | date_to_xmlschema }}</published>{% else %}
+				<published>{{ post.date | date_to_xmlschema }}</published>
+				<updated>{{ post.date | date_to_xmlschema }}</updated>{% endif %}
+				<guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>

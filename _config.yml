@@ -1,0 +1,105 @@
+# Site wide configuration
+
+title: Ratón de Biblioteca
+locale: es_ES
+timezone: CET
+description: Notas de programación, diseño de software y buenas pŕacticas.
+logo: site-logo.svg
+search: true
+url: #your-site-url
+external_data_url: # common url for images and other external data
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-redirect-from
+  - jekyll-paginate
+  - jemoji
+
+collections_dir: docs
+
+# Front Matter Defaults
+defaults:
+  # Post defaults
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      comments: true
+      share: true
+
+# Add you collections here. Remove the 'animals' collection in your site.
+collections:
+  animals:
+    output: true
+    permalink: /:collection/:path
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  enable_coderay: false
+
+mathjax: true
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+paginate: 20
+paginate_path: /posts/page:num
+
+# See http://jch.penibelst.de/ for settings.
+compress_html:
+  clippings: []
+  comments: []
+  endings: []
+  ignore:
+    envs: []
+  blanklines: true
+  profile: false
+  startings: []
+
+# Site owner
+owner:
+  name: David Pérez Rodríguez
+  avatar: site-logo.png
+  email: info@dabiz.me
+  disqus-shortname: #your-disqus-shortname
+  twitter: #your-twitter-name
+  facebook: #username
+  github: DavidPerezRod
+  stackexchange: #http://stackoverflow.com/users/123456/username
+  linkedin: dabizme
+  instagram:
+    user: #instagram-username
+    userId: #instagram-userId
+    clientId: #instagram-clientId
+  flickr: #username
+  tumblr: #tumblr-name
+  pinterest: #username
+  weibo: #userid
+  soundcloud: #soundcloud-name
+  mixcloud: #mixcloud-name
+  lastfm: #username
+  tawkto:
+    siteID: #tawkto-siteID
+  google:
+    plus:
+    analytics: #google-analytics-id
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:

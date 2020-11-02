@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Archive pages
+   ========================================================================== */
+
+
+
+
+/*
+   Post archive
+   ========================================================================== */
+
+.post-list {
+  margin: 0;
+  padding: 0;
+  li  {
+    margin-bottom: 2rem;
+    @include clearfix;
+    list-style-type: none;
+      > article {
+        font-family: $base-font;
+        @include font-size(22,no,22);
+        padding-bottom: 0.35rem;
+        border-bottom: 1px solid #aaa;
+        &:hover {
+            border-bottom: 1px solid darken($link-color, 30);
+        }
+      }
+      > footer {
+        text-transform: uppercase;
+        font-family: $alt-font;
+        font-size: 0.85rem;
+        margin-top: 0.35rem;
+          & > span {
+            display: inline-block;
+            margin-right: 6px;
+          }
+      }
+    > a {
+      border-bottom-width: 0; /* remove underlines from items in post indexes */
+    }
+  }
+
+  a > span {
+    float: right;
+  }
+
+  .entry-date {
+    font-family: $alt-font;
+    @include font-size(14,no);
+    text-transform: uppercase;
+    display: none;
+
+    @include media($medium) {
+      display: inline;
+    }
+  }
+
+  /* post excerpt */
+  .excerpt {
+    display: block;
+    font-family: $base-font;
+    font-style: italic;
+    font-size: 1rem;
+    text-transform: none;
+    margin-right: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/*
+   Tag archive
+   ========================================================================== */
+
+.tag-box {
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  @include clearfix;
+
+  &.inline li {
+    float: left;
+    font-size: 1rem;
+    line-height: 1;
+    list-style-type: none;
+  }
+
+  a {
+    padding: 4px 6px;
+    margin: 2px;
+    background-color: lighten($black, 90);
+    @include rounded(4px);
+    text-decoration: none;
+    border-bottom: 0 !important;
+    &:hover {
+      background-color: lighten($black, 80);
+    }
+    &:after {
+      content: none !important;
+    }
+    span {
+      vertical-align: super;
+      @include font-size(12);
+    }
+  }
+}
+
+.tag-h4 {
+    font-family: $base-font;
+    margin-bottom: 0.8rem;
+    padding-top: $main-menu-height;
+}
+
+.tag-post-list {
+  margin: 0;
+  padding: 0;
+
+  li  {
+    margin-bottom: 0.2rem;
+    @include clearfix;
+    list-style-type: none;
+      > article {
+        font-family: $central-quote-font;
+        @include font-size(19,no,19);
+        &:hover {
+            border-bottom: 1px solid darken($link-color, 30);
+        }
+      }
+      > footer {
+        text-transform: uppercase;
+        font-family: $alt-font;
+        font-size: 0.85rem;
+        margin: 5px 0;
+          & > span {
+            display: inline-block;
+            margin-right: 6px;
+          }
+      }
+    > a {
+        border-bottom-width: 0; /* remove underlines from items in post indexes */
+    }
+  }
+
+  a > span {
+    float: right;
+  }
+
+  .entry-date {
+    font-family: $alt-font;
+    @include font-size(14,no);
+    display: none;
+    @include media($medium) {
+      display: inline;
+    } 
+  }
+}

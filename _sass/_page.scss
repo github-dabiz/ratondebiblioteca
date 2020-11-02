@@ -1,0 +1,374 @@
+/* ==========================================================================
+   Page/post layout and styling
+   ========================================================================== */
+
+/*
+   Main content
+   ========================================================================== */
+
+#main {
+	@include clearfix;
+}
+
+.entry,
+.hentry {
+	@include clearfix;
+	border-bottom: 1px solid lighten($black,80);
+	border-bottom: 1px solid rgba($black,.10);
+}
+
+/* feature image */
+
+.entry-feature-image-container {
+    margin: 20px 0 0;
+    width: 100%;
+    position: relative;
+
+	@include media($medium) {
+		margin-top: -75px; /* move up to be overlapped by site logo */
+	}
+
+	@include media($large) {
+		margin-top: -145px; /* move up further to be overlapped by site logo */
+	}
+}
+
+img.entry-feature-image {
+    width: 100%;
+    height: auto;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* page header */
+
+.entry-header {
+	width: 100%;
+    margin-bottom: -1.1em;
+}
+
+/* tag listing in page header */
+
+.entry-tags {
+  display: block;
+  padding: 0;
+  text-transform: uppercase;
+  @include font-size(14, no, 1);
+  font-weight: 400;
+  font-family: $alt-font;
+  a {
+    color: $text-color;
+    padding: 0px 5px;
+      &:hover {
+        border-bottom: 0.01rem solid;
+      }
+  }
+
+  li {
+    display: inline-block;
+    @include font-size(14, no, 1);
+    margin-bottom: 0;
+
+    &:before {
+      content: "\2234";
+    }
+
+    &:nth-child(-n+2) {
+
+      &:before {
+        content: "";
+      }
+
+      a {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+/* page title */
+
+span + .entry-title {
+	margin-top: 0;
+}
+
+.entry-title {
+	font-family: $base-font;
+	@include font-size(24,yes,24);
+	font-weight: 400;
+	letter-spacing: -1px;
+
+	a {
+		color: $black;
+		text-decoration: underline;
+	}
+
+	@include media($medium) {
+		@include font-size(32,yes,32);
+	}
+
+	@include media($large) {
+		@include font-size(40,yes,40);
+	}
+    
+    @media print {
+      	@include font-size(40,yes,40);
+    }    
+}
+
+/* page/post wrapper */
+
+.entry-wrapper {
+	@include outer-container;
+	margin-top: 4em;
+	margin-bottom: 1em;
+	padding-right: $gutter;
+	padding-left: $gutter;
+}
+
+footer.entry-wrapper {
+    margin-top: 0;
+}
+
+/* page/post meta content (date, author, etc) */
+
+.entry-meta {
+  @include span-columns(12);
+  float: none;
+  text-transform: uppercase;
+  font-family: $alt-font;
+  @include font-size(14, yes, 16);
+  border-top: 1px solid lighten($black, 50);
+  padding-top: 4px;
+    a {
+      color: $text-color;
+    }
+
+    //@include media($large) {
+    //  @include span-columns(2.5);
+    //}
+
+    & > span {
+      //padding: 0 12px 0 0;
+      margin-right: 8px;
+      display: inline-block;
+      //@include media($large) {
+      //  display: block;
+      //  padding: 8px 0;
+      //  border-bottom: 1px solid lighten($black,80);
+      //  border-bottom: 1px solid rgba($black,.10);
+      //}
+    }
+}
+
+/* author avatar (circular) */
+
+.bio-photo {
+	display: none;
+	//@include media($large) {
+	//	display: block;
+	//	width: 150px;
+	//	height: 150px;
+	//	margin-bottom: 10px;
+	//	@include rounded(150px);
+	//	@include clearfix;
+	//}
+}
+
+
+/* feature image credit */
+
+.image-credit {
+  z-index: 10;
+  font-family: $imagecredit-font;
+  font-style: italic;
+  text-align: right;
+  @include font-size(12, no, 18);
+  color: $border-color;
+  @include border-radius(3px,0,0,3px);
+  @include clearfix();
+
+  @include media($medium) {
+    @include font-size(14, no, 21);
+  }
+
+  @include media($large) {
+    @include font-size(14, no, 21);
+  }
+
+  a {
+    color: lighten($white, 30);
+    background-color: rgba($black, 0.3);
+    padding: 0 2px;
+  }
+  a::before {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    content: "\f030";
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+/* main content block */
+
+.entry-content {
+	@include span-columns(12);
+
+	p:first-child {
+		margin-top: 0;
+	}
+
+	//@include media($large) {
+	//	@include span-columns(9.5);
+	//}
+
+	/* nice link underlines */
+  p > a,
+	li > a {
+		border-bottom: 1px dotted lighten($link-color, 50);
+		&:after {
+			font-family: 'FontAwesome';
+			content: $fa-var-external-link;
+			padding-left: 5px;
+			font-size: 0.85rem;
+		}
+
+		&:hover {
+			border-bottom-style: solid;
+		}
+	}
+}
+
+a.reversefootnote {
+    border-bottom: none !important;
+    &:after {
+        content: '' !important;
+    }
+}
+
+/*
+   post-excerpt
+   ========================================================================== */
+
+#post-excerpt {
+	font-family: $heading-font;
+    padding-left: 25%;
+    text-align: right;
+    margin-bottom: 1rem;
+    
+    &:before {
+      font-family: "Philosopher";
+      content:"\201C"; 
+      line-height:1px;
+      font-size: 2.2rem;
+      font-style: italic;
+      vertical-align: middle;
+    }
+    
+    &:after {
+      font-family: "Philosopher";
+      content:"\201D"; 
+      line-height:1px;
+	  font-size: 2.2rem;
+      font-style: italic;
+      vertical-align: middle;
+    }
+}
+
+/*
+   Disqus
+   ========================================================================== */
+#disqus_thread {
+	margin-top: 0px;
+	min-height: 357px;
+}
+
+#disqus_thread iframe {
+	height: auto !important;
+	min-height: 357px;
+}
+
+/*
+   Pagination
+   ========================================================================== */
+
+.pagination {
+	margin-top: 2em;
+	text-align: center;
+	font-family: $alt-font;
+	font-size: 1.2rem;
+}
+
+/*
+   Overrides
+   ========================================================================== */
+
+/* adjust width for lack of meta/author column */
+
+#home,
+#page {
+
+	.entry-wrapper {
+		max-width: em(760);
+	}
+
+	.entry-title {
+          text-align: center;
+          max-width: 100%;
+          margin-bottom: 3.5rem;
+	}
+
+	.entry-content {
+		@include span-columns(12);
+	}
+}
+
+/*
+   Kramdown generated table of contents
+   ========================================================================== */
+
+#markdown-toc {
+	font-family: $alt-font;
+	margin-top: $gutter;
+	margin-bottom: $gutter;
+	padding-left: 0;
+	border: 1px solid $border-color;
+	border-radius: $border-radius;
+
+  ul {
+  	list-style-type: none;
+  	padding-left: 0;
+  }
+
+  li {
+    @include font-size(16,no,18);
+    border-bottom: 1px solid $border-color;
+    list-style-type: none;
+  }
+
+  h6 {
+    margin: 0;
+    padding: (.25 * $gutter) (.5 * $gutter);
+    background: $table-stripe-color;
+  }
+
+  a {
+    display: block;
+    padding: (.25 * $gutter) (.5 * $gutter);
+    border-left: 2px solid transparent;
+    border-bottom: 0 solid transparent;
+
+    &:hover,
+    &:focus {
+      background: lighten($border-color,5);
+    }
+    &:after {
+      content: '';
+    }
+  }
+}

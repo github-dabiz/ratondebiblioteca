@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+/*
+   Default button
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 6px 15px;
+  @include font-size(20);
+  outline: none !important;
+  text-align: center;
+  text-decoration: none;  
+  cursor: pointer;
+  
+  /* button colors */
+  $buttoncolors: (primary, $primary-color),  (inverse, #fff),
+     (light-outline, transparent),  (success, $success-color),
+     (warning, $warning-color),  (danger, $danger-color),  (info, $info-color),
+     (facebook, $facebook-color),  (twitter, $twitter-color),
+     (google-plus, $google-plus-color),  (linkedin, $linkedin-color),
+     (reddit, $reddit-color);
+
+  @each $buttoncolor, $color in $buttoncolors {
+    &--#{$buttoncolor} {
+      @include yiq-contrasted($color);
+      @if ($buttoncolor == inverse) {
+        background-color: $black;
+        color: $white;          
+        border: 1px solid $black !important;
+      }
+      @if ($buttoncolor == light-outline) {
+        border: 1px solid #fff;
+      }
+
+      &:hover {
+        @include yiq-contrasted(mix(#000, $color, 20%));
+      }
+
+      &:visited {
+        // @include yiq-contrasted($color);
+      }
+    }
+  }
+
+  /* fills width of parent container */
+  &--block {
+    display: block;
+    width: 100%;
+
+    + .btn--block {
+      margin-top: 0.25em;
+    }
+  }
+
+  /* disabled */
+  &--disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+    opacity: 0.65;
+  }
+
+  /* extra large button */
+  &--x-large {
+    font-size: 2rem;
+  }
+
+  /* large button */
+  &--large {
+    font-size: 1.5rem;
+  }
+
+  /* small button */
+  &--small {
+    font-size: 0.75rem;
+  }
+}
+
+a.btn {
+  &:after {
+    content: '' !important;
+  }
+}
+
+.btn p > a {
+  border: none;
+}
+
+.disabled-btn {
+  pointer-events: none;
+  background-color: $white;
+  color: $black;  
+  outline: none !important;
+  @include opacity(0.7);
+}
+
+/* Close button */
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: transparent;
+  border: 0 solid transparent;
+  color: $white;
+}
