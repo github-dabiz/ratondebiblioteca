@@ -51,7 +51,7 @@ div .central-quote {
     background-size: contain;
     color: #222;
     font-family: $central-quote-font;
-    font-style: italic;	
+    //font-style: italic;
     line-height: 1.2em; 
 	padding: 30px 30px 40px;
     text-align: center;
@@ -74,7 +74,7 @@ div .central-quote {
 // --------------------------------------------------
 .inline-quote {
 	font-family: $quote-font;
-    font-style: italic;
+    //font-style: italic;
 }
 
 // non-selectable element
@@ -104,7 +104,7 @@ div .central-quote {
   padding : 0 6px;
   font-size : 24px;
   font-family: $heading-font;
-  font-style: italic;
+  //font-style: italic;
   display: inline; 
   background-color: $body-color;
   font-weight: normal;
@@ -384,7 +384,7 @@ iframe {
 	height: 300px;
 	padding: 15px;
 	font-family: $heading-font;
-	font-style: italic;
+	//font-style: italic;
 	text-align: left;
 	@include font-size(16,no,15);
 	margin-top: 0;

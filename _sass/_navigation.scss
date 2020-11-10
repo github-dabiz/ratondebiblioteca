@@ -5,8 +5,9 @@
 .gn-menu-main ul {
 		margin: 0;
 		padding: 0;
-		background: $navigation-bar-color;
-		color: #5f6f81;
+		background: $navigation-bar2-color;
+		//color: #5f6f81;
+        color: #5f6f81;
 		list-style: none;
 		text-transform: none;
 		font-weight: 300;
@@ -28,12 +29,14 @@
 .gn-menu-main a {
         display: block;
         height: 100%;
-        color: $text-color;
+        color: $text-header-color;
         text-decoration: none;
         cursor: pointer;
         text-transform: uppercase;
         &:hover {
           background: $border-color;
+          color: $text-color;
+          //background: $navigation-background-selection; --> este es el que marca el hover del menu
         }
 }
 
@@ -86,7 +89,7 @@
     overflow: hidden;
     width: 50px;
     border-right: 1px solid $border-color;
-    background: $navigation-bar-color;
+    background: $navigation-bar2-color;
     -webkit-transform: translateX(-50px);
     -moz-transform: translateX(-50px);
     transform: translateX(-50px);
@@ -148,7 +151,7 @@ input.gn-search {
 /* placeholder */
 
 .gn-search::-webkit-input-placeholder {
-		color: #5f6f81
+		color: #0476f8
 }
 
 .gn-search:-moz-placeholder {
@@ -299,7 +302,7 @@ input.gn-search:focus {
   position: absolute;
   height: 4px;
   width: 100%;
-  background: $black;
+  background: $text-header-color ;
   border-radius: 3px;
   opacity: 1;
   left: 0;

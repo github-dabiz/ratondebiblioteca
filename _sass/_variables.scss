@@ -26,6 +26,7 @@ body {
 
 // COLORS =====================================================
 $body-color               : #fff;
+$text-header-color        : #fff;
 $text-color               : #000;
 $base-color               : #343434;
 $comp-color               : adjust-hue($base-color, 180);
@@ -37,6 +38,8 @@ $link-color               : #222;
 
 $navigation-arrows-color  : #696969;
 $navigation-bar-color     : #fbfbfb;
+$navigation-bar2-color     : #000;
+$navigation-background-selection: #282727;
 
 $table-border-color       : $border-color;
 $table-border             : 1px solid $table-border-color;

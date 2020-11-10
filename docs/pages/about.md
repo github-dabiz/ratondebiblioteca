@@ -10,7 +10,7 @@ hidelogo: true
 ---
 {% include page-image.html image='images/about.gif' %}
 
-Ratón de biblioteca, es un blog dedicado al desarrollo backend Java. Esto no implica que esté dedicado exclusivamente al ecosistema Java.
+Ratón de biblioteca, _es un blog dedicado al desarrollo backend Java_. Esto no implica que esté dedicado exclusivamente al ecosistema Java.
 
 Como programador, hace tiempo que necesito estructurar de alguna forma el conocimiento que voy adquiriendo a través de artículos, cursos, libros, etc. Y de eso va este blog, de organizar la relación de notas que tome y publicarla, por si acaso a alguien le resultase útil. 
 

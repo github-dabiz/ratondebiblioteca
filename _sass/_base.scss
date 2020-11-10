@@ -186,7 +186,7 @@ figcaption {
     padding-left: 2 * $gutter;
     padding-right: 2 * $gutter;
     font-family: $figcaption-font;
-    font-style: italic;
+    //font-style: italic;
     font-weight: 300;
     @include font-size(15,no,15);
     color: $text-color;
