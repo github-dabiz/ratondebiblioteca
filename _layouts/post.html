@@ -1,95 +1,126 @@
---- 
-layout: default 
---- 
+---
+layout: default
+disqus: false
+post_class: post-template
+---
 
-{% include subpage-header.html %}
-
-<!-- POST HTML -->
-<article id="post">
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
-
-                <!-- Blog Post -->
-
-                <!-- Title -->
-                <h1>{{ page.title }}</h1>
-
-                <!-- Author -->
-                <p class="lead">
-                    by <a href="#">{{ page.author }}</a>
-                </p>
-
-                <hr>
-
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on {{ page.date | date: "%B %d, %Y"}} </p>
-
-                <hr>
-
-                <!-- Preview Image -->
-                {% if page.image %}
-                <img class="img-responsive" src="{{ page.image }}" alt="{ page.image }">
-                {% endif %}
-
-
-                <hr>
-
-                <!-- Post Content -->
-                {% if page.image %}
-                <p class="lead"> {{ page.lead }} </p>
-                {% endif %}
-
+<div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%B %-d,
+                        %Y" }}</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">{{ page.title }}</h1>
+            </header><!-- .post-header -->
+            {% if page.featured_image %}
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="{{ site.baseurl }}{{ page.featured_image }}"
+                    alt="{{ page.title }}"></div>
+            {% endif %}
+            <div class="post-content">
                 {{content}}
-
-                <hr>
-
-
-                {% if page.previous.url %}
-                <span class="previous-link">
-                    <a rel="prev" href="{{ page.previous.url }}">Previous article</a>
-                </span>
-                {% endif %}                
-
-
-                {% if page.next.url %}
-                <span class="next-link pull-right">
-                    <a rel="next" href="{{page.next.url}}">Next article</a>
-                </span>
-                {% endif %} 
-
-                <hr>
             </div>
-
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-                <!-- Blog Categories Well -->
-                <div class="well">
-                    {% for category_name in page.categories limit:1 %}
-                        <h4>{{ category_name | capitalize }}</h4>
-                    <div class="row">
-                        <div class="col-lg-12">                            
-                            <ul class="list-unstyled">
-                                {% for post in site.categories[category_name] limit: 5 %}
-                                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+            <footer class="post-footer">
+                {% if page.tags.size > 0 %}
+                <p class="post-tags">
+                    {% for tag in page.tags %} {% if forloop.index == page.tags.size %}
+                    <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '- ' }}/'>{{ tag | camelcase }}</a>
+                    {% else %}
+                    <a href='{{ site.baseurl }}tag/{{ tag | downcase | replace: ' ', '- ' }}/'>{{ tag | camelcase }}</a>
+                    {% endif %}
+                    {% endfor %}
+                </p>
+                {% endif %}
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text={{ page.title | url_encode }}&amp;url={{ site.production_url }}{{ page.url | remove_first: '/' }}">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ site.production_url }}{{ page.url | remove_first: '/' }}">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="{{ site.baseurl }}/assets/images/{{ site.author.image }}" alt="{{ site.author.name }}'s Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About {{ site.author.name }}</h2>
+                    <p class="author-description">{{ site.author.bio }}</p>
+                </div>
+            </div>
+            {% include disqus.html %}
+        </article>
+        {% if site.mailchimp_url %}
+        {% include newsletter-box.html %}
+        {% endif %}
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            {% if page.previous.url %}
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="{{page.previous.date | date: '%B %-d, %Y'}}">{{page.previous.date
+                            | date: "%B %-d, %Y"}}</time>
                     </div>
-                    {% endfor %}                    
-                </div>
-
-                <!-- Side Widget Well -->
-                <div class="well">
-                    {% include contact-info.html %}
-                </div>
-            </div>
-
-        </div>
-        <!-- /.row -->
-    </div>
-</article>
+                    <h3 class="post-title"><a href="{{ site.baseurl }}{{page.previous.url}}">{{page.previous.title}}</a></h3>
+                    <p class="post-tags">
+                        {% if page.previous.tags.size > 0 %}
+                        {% for tag in page.previous.tags %}
+                        {% if forloop.index == page.previous.tags.size %}
+                        <a href='{{ site.baseurl }}/tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | capitalize
+                            }}</a>
+                        {% else %}
+                        <a href='{{ site.baseurl }}/tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | capitalize
+                            }}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </p>
+                </header>
+                {% if page.previous.featured_image_thumbnail %}
+                <a href="{{ site.baseurl }}{{page.previous.url}}" class="post-thumbnail">
+                    <img src="{{ page.previous.featured_image_thumbnail }}" alt="{{page.previous.title}}" />
+                </a>
+                {% elsif page.previous.featured_image %}
+                <a href="{{ site.baseurl }}{{page.previous.url}}" class="post-thumbnail">
+                    <img src="{{ page.previous.featured_image }}" alt="{{page.previous.title}}" />
+                </a>
+                {% else %}
+                {% endif %}
+            </article>
+            {% endif %}
+            {% if page.next.url %}
+            <article class="post">
+                <header class="post-header">
+                    <div class="post-meta">
+                        <time class="published" datetime="{{page.next.date | date: '%B %-d, %Y'}}">{{page.next.date |
+                            date: "%B %-d, %Y"}}</time>
+                    </div>
+                    <h3 class="post-title"><a href="{{ site.baseurl }}{{page.next.url}}">{{page.next.title}}</a></h3>
+                    <p class="post-tags">
+                        {% if page.next.tags.size > 0 %}
+                        {% for tag in page.next.tags %}
+                        {% if forloop.index == page.next.tags.size %}
+                        <a href='{{ site.baseurl }}/tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | capitalize
+                            }}</a>
+                        {% else %}
+                        <a href='{{ site.baseurl }}/tag/{{ tag | downcase | replace: ' ', '-' }}/'>{{ tag | capitalize
+                            }}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    </p>
+                </header>
+                {% if page.next.featured_image_thumbnail %}
+                <a href="{{ site.baseurl }}{{page.next.url}}" class="post-thumbnail">
+                    <img src="{{ page.next.featured_image_thumbnail }}" alt="{{page.next.title}}" />
+                </a>
+                {% elsif page.next.featured_image %}
+                <a href="{{ site.baseurl }}{{page.next.url}}" class="post-thumbnail">
+                    <img src="{{ page.next.featured_image }}" alt="{{page.next.title}}" />
+                </a>
+                {% else %}
+                {% endif %}
+            </article>
+            {% endif %}
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->

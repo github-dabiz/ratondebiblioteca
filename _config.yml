@@ -1,70 +1,70 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
+# Site setings
+name: 'Ratón de Biblioteca'
+description: 'Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.'
+meta_description: 'programacion programación Java Spring patrones diseño arquitectura software metodologia metodología'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon2.ico'
+baseurl: 
+production_url: https://ratondebiblioteca.com/
+#disqus: 'justgoodthemes'
+#mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
+cover_image: bc_1.jpg
+# Add your GA Tracking Id
+ga_analytics: 
 
-# in the templates via {{ site.myvariable }}.
 
-title: Ratón de Biblioteca
-email: info@dabiz.me
-description: >- # this means to ignore newlines until "baseurl:"
-  Java, Spring, Patterns, Design Principles. Apuntes de lecturas, cursos, páginas. Información de cualquier procedencia que he considerado relevante para mi formación.
-  Las publico no con ánimo de ensañar, sino de compartir. Como habrá poco contenido original, cada sección tendrá su propia seccin
-  de referencias, en la que indicaré las fuentes originales de las que me serví para crearla.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://localhost:4000/" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+# Author
+author:
+  name: 'David Pérez'
+  image: 'author_box_image.jpg'
+  greetings: 'Ratón de Biblioteca'
+  description: "Notas de programación, buenas prácticas y diseño de software"
+  bio: 'Psicólogo de corazón, informático de profesión, llevo más de veinte años dedicado al desarrollo de software en los que me he especializado en el ecosistema Java/Spring'
 
+# Contact form setings
+email: david.perez.rod@gmx.es
+contact_page_description: "Esteré encantado de recibir cualquier sugerencia, corrección, o propuesta. Si hay algo que quieras comentarme, ponte en contacto conmigo a través del siguiente formulario."
+thankyou_page_description: "Tu mensaje se envió correctamente."
+
+# Social links
+#twitter: 'username'
+#facebook: 'username'
+github: 'DavidPerezRod'
+#codepen: 'username'
+#dribbble: 'username'
+#medium: '@username'
+#instagram: 'username'
+#pinterest: 'username'
+linkedin: 'dabizme'
+#producthunt: '@username'
+
+# Navigation 
+navigation:
+  - text: About
+    url: /about/
+#  - text: Style Guide
+#    url: /style-guide/
+  - text: Contact Me
+    url: /contact/
+
+# Required Plugins
+plugins_dir:
+  - jekyll-paginate
+  - jekyll-tagsgenerator
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Pagination
+paginate: 5
+paginate_path: /page:num/
+
+# Permalinks
+permalink: /:title
+
+# Other
 markdown: kramdown
 
-permalink: none 
-# Build settings
-plugins:
-  - jekyll-feed
-
-
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts" # previously `post` in Jekyll 2.2
-    values:
-      layout: "post"
-      author: "David Pérez"
-      category: "jekyll"
-
-
-  # Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
