@@ -5,7 +5,7 @@ meta_description: 'programacion programación Java Spring patrones diseño arqui
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon2.ico'
 baseurl: 
-production_url: https://ratondbiblioteca.com/
+production_url: http://ratondbiblioteca.com/
 #disqus: 'justgoodthemes'
 #mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
 cover_image: bc_1.jpg
