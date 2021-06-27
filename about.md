@@ -10,7 +10,7 @@ Como programador, hace tiempo que necesito estructurar notas, lecturas, código,
 
 Al ser una relación de notas, supongo que el formato será algo distinto al convencional, y aunque existirán categorías, los post se organizarán como lo que son, apuntes.
 
-En cuanto a mí, llevo ya toda una vida dedicado al desarrollo de software. Durante estos años, he desempeñado distintos roles, programador, analista, jefe de proyecto o coordinador.
+En cuanto a mí, llevo ya toda una vida dedicada al desarrollo de software. Durante estos años, he desempeñado distintos roles, programador, analista, jefe de proyecto o coordinador.
 
 Y ha sido un camino interesante, me ha ayudado a ir aclarando las ideas, y llegar hasta aquí. Saber que me encanta programar, me gusta diseñar, me interesa la arquitectura de software y que la metodología es un mal necesario.
 
