@@ -4,7 +4,7 @@ description: 'Ratón de Biblioteca es un blog dedicado al diseño de software en
 meta_description: 'programacion programación Java Spring patrones diseño arquitectura software metodologia metodología'
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/favicon2.ico'
-baseurl:
+baseurl: /
 production_url: https://ratondbiblioteca.com/
 #disqus: 'justgoodthemes'
 #mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
@@ -41,11 +41,11 @@ linkedin: 'dabizme'
 # Navigation 
 navigation:
   - text: About
-    url: //about/
+    url: /about/
 #  - text: Style Guide
 #    url: /style-guide/
   - text: Contact Me
-    url: //contact/
+    url: /contact/
 
 # Required Plugins
 plugins_dir:
