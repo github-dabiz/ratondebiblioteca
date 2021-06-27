@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ratón de Biblioteca</title>
+    <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 27 Jun 2021 22:16:45 +0200</pubDate>
+    <lastBuildDate>Sun, 27 Jun 2021 22:16:45 +0200</lastBuildDate>
+    <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Arquitectura hexagonal</title>
+        <description>&lt;p&gt;Propuesta en 2005 por &lt;a href=&quot;http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture&quot;&gt;Alistair Cockburn&lt;/a&gt;, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.&lt;/p&gt;
+
+&lt;p&gt;El motivo de representar este tipo de arquitecturas como un hexágono, es arbitrario, lo que pretende reflejar es el hecho de que las comunicaciones con el exterior tienen la misma naturaleza y deben asumir las mismas reglas.&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;La consecuencia que se deriva de aplicar esta arquitectura, es desarrollar aplicaciones que son:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Independientes de agentes externos&lt;/li&gt;
+  &lt;li&gt;Independientes de framework&lt;/li&gt;
+  &lt;li&gt;Independientes de la UI&lt;/li&gt;
+  &lt;li&gt;Independientes de BBDD&lt;/li&gt;
+  &lt;li&gt;Más adaptables&lt;/li&gt;
+  &lt;li&gt;Más reutilizables&lt;/li&gt;
+  &lt;li&gt;Más mantenibles&lt;/li&gt;
+  &lt;li&gt;Más testeables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;motivación&quot;&gt;Motivación&lt;/h2&gt;
+
+&lt;p&gt;En su origen, Alistair Cockburn hacía mucho énfasis en evitar la infiltración de la lógica de negocio en la interfaz de usuario. Ya que si esto se produce, da lugar a una arquitectura fuertemente acoplada entre el frontend y el backend.&lt;/p&gt;
+
+&lt;p&gt;Su propuesta pretende mejorar las siguientes áreas durante el ciclo de vida del producto:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;automatización de pruebas&lt;/li&gt;
+  &lt;li&gt;desacoplamiento de los detalles de infraestructura&lt;/li&gt;
+  &lt;li&gt;conexion con nuevos agentes&lt;/li&gt;
+  &lt;li&gt;abstraer el dominio de la comunicación con agentes externos, usuarios, comandos, lotes, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Según él, la raíz del problema está en la interacción entre el interior y el exterior, la regla es que los detalles del código interior no deben filtrarse al exterior.&lt;/p&gt;
+
+&lt;p&gt;Para conseguirlo, propone utilizar el patrón de puertos y adaptadores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Los &lt;strong&gt;puertos&lt;/strong&gt; son las interfaces que definen la interacción con el exterior y exponen únicamente el contrato con nuestro dominio, dejando que toda la lógica de transformación esté de puertas afuera y no se contamine el interior. Pueden ser de varios tipos:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;de entrada&lt;/strong&gt;. Sirven para hacer peticiones a la aplicación&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;de salida&lt;/strong&gt;. Sirven para solicitar información desde la aplicación&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;de entrada/salida&lt;/strong&gt;. En general son adaptadores bidireccionales a un recurso. No representan comunicación bidireccional, sino que la aplicación es capaz de escuchar peticiones del recurso y hacerle peticiones.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Los &lt;strong&gt;adaptadores&lt;/strong&gt; son precisamente la forma de conectarse a través de dicho contrato. Establecen la comunicación y la conversión de datos entre el dominio y el exterior. Lo relevante en esta interacción, es que los adaptadores no pertenecen al core, así que pueden implementarse por separado. Para cada dispositivo externo habrá un adaptador, y será de entrada o salida dependiendo del sentido de la comunicación. Por lo general habrá varios adaptadores para cada tipo de puerto, uno por tipo de tecnología o agente que puede conectarse a ese puerto.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Además, diferencia entre dos tipos de puertos y adaptadores. Los &lt;strong&gt;primarios o driving&lt;/strong&gt;, son los que habilitan conexiones hacia nuestra aplicación, y los &lt;strong&gt;secundarios&lt;/strong&gt; que permiten conexiones desde nuestra aplicación. También tienen otra particularidad, en los que conectan la UI con la aplicación, el adaptador pertence a la capa de aplicación (API) del caso de uso, mientras que en el caso de backend, es éste el que inyecta el adaptador específico para permitir la comunicación con la utilidad. El núcleo en ambos casos solo debe conocer la interfaz.&lt;/p&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/20210205_111.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; -webkit-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!-- -moz-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;puertos y adaptadores&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;/assets/images/posts/2021/20210205_111.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; border-radius: 10px;
+box-shadow: 0 0 15px #ddd;&quot; /&gt;
+    
+    &lt;figcaption class=&quot;caption-text&quot;&gt;puertos y adaptadores&lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/20210205_111.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center;&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;puertos y adaptadores&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;h2 id=&quot;arquitectura-hexagonal-y-ddd&quot;&gt;Arquitectura hexagonal y DDD&lt;/h2&gt;
+
+&lt;p&gt;Al ser el dominio el elemento en torno al cual se define este enfoque, encaja muy bien con la idea de &lt;strong&gt;Domian Driven Design&lt;/strong&gt;, ya que se puede implementar su lógica sin atender a detalles específicos.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, un punto de vista crítico con todo este planteamiento, que considero muy interesante es el de &lt;a href=&quot;https://javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/&quot;&gt;Javier Vélez Reyes - Ni Nueva Ni Arquitectura Ni Hexagonal&lt;/a&gt;, que argumenta razonadamente en contra de esta propuesta, como un enfoque geniunamente arquitectónico y rebajándolo a un tipo de patrón o recomendación de buenas prácticas, que símplemnte aglutina conceptos preexistentes.&lt;/p&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture&quot;&gt;Alistair Cockburn&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@edusalguero/arquitectura-hexagonal-59834bb44b7f&quot;&gt;Edu Slaguero: Arquitectura hexagonal&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.allegro.tech/2020/05/hexagonal-architecture-by-example.html&quot;&gt;Allegro Tech Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://herbertograca.com/2017/09/14/ports-adapters-architecture/&quot;&gt;hgraca&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.adictosaltrabajo.com/2019/07/02/capas-cebollas-y-colmenas-arquitecturas-en-el-backend/&quot;&gt;Capas, cebollas y colmenas: arquitecturas en el backend&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/&quot;&gt;Ni Nueva Ni Arquitectura Ni Hexagonal&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 05 Feb 2021 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/arquitectura-hexagonal</link>
+        <guid isPermaLink="true">http://localhost:4000/arquitectura-hexagonal</guid>
+        
+        <category>Diseño</category>
+        
+        <category>Arquitectura</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
