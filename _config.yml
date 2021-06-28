@@ -41,11 +41,11 @@ linkedin: 'dabizme'
 # Navigation 
 navigation:
   - text: About
-    url: /ratondebibliotecta/about/
+    url: //about/
 #  - text: Style Guide
 #    url: /style-guide/
   - text: Contact Me
-    url: /ratondebiblioteca/contact/
+    url: //contact/
 
 # Required Plugins
 plugins_dir:
