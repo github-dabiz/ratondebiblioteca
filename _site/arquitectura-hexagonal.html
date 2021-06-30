@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+        <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Arquitectura hexagonal | Ratón de Biblioteca</title>
+<meta name="generator" content="Jekyll v3.4.0" />
+<meta property="og:title" content="Arquitectura hexagonal" />
+<meta name="author" content="David Pérez" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Propuesta en 2005 por Alistair Cockburn, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos." />
+<meta property="og:description" content="Propuesta en 2005 por Alistair Cockburn, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos." />
+<link rel="canonical" href="http://localhost:4000/arquitectura-hexagonal" />
+<meta property="og:url" content="http://localhost:4000/arquitectura-hexagonal" />
+<meta property="og:site_name" content="Ratón de Biblioteca" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-05T00:00:00+01:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Arquitectura hexagonal","dateModified":"2021-02-05T00:00:00+01:00","datePublished":"2021-02-05T00:00:00+01:00","url":"http://localhost:4000/arquitectura-hexagonal","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/arquitectura-hexagonal"},"author":{"@type":"Person","name":"David Pérez"},"description":"Propuesta en 2005 por Alistair Cockburn, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"David Pérez"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+
+    <!-- Site Favicon -->
+    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon2.ico" type="image/png" />
+
+    <!-- Font Embed Code -->
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i" rel="stylesheet" />
+
+    <!-- CSS Styles -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+
+
+<body class="layout-post">
+    <div id="page" class="site">
+
+        
+        <header id="masthead" class="site-header outer">
+    <div class="site-header-inside">
+        <div class="site-branding">
+            
+                <p class="site-logo"><a href="/" rel="home"><img src="/assets/images/logo.png" alt="Ratón de Biblioteca" /></a></p>
+                <h1 class="site-title screen-reader-text"><a href="" rel="home"></a></h1>
+            
+        </div><!-- .site-branding -->
+        <nav id="main-navigation" class="site-navigation" aria-label="Primary Navigation">
+            <ul class="menu">
+            
+                <li class="menu-item"><a href="/about/">About</a></li>
+            
+                <li class="menu-item"><a href="/contact/">Contact Me</a></li>
+            
+            </ul>
+            <button id="sidebar-show" class="sidebar-toggle"><span class="screen-reader-text">Open Sidebar</span><span class="icon-more" aria-hidden="true"></span></button>
+        </nav><!-- .site-navigation -->
+    </div><!-- .site-header-inside -->
+</header><!-- .site-header -->
+        
+
+        <div id="content" class="site-content fadeInDown delay_075s">
+    <main id="main" class="site-main outer">
+        <article class="post-full inner">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-date" datetime="2021-02-05">February 5,
+                        2021</time>
+                </div><!-- .post-meta -->
+                <h1 class="posttitle">Arquitectura hexagonal</h1>
+            </header><!-- .post-header -->
+            
+            <div class="post-thumbnail"><img class="featured-image img-fluid" src="assets/images/posts/2021/20210205P.jpg"
+                    alt="Arquitectura hexagonal"></div>
+            
+            <div class="post-content">
+                <p>Propuesta en 2005 por <a href="http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture">Alistair Cockburn</a>, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.</p>
+
+<p>El motivo de representar este tipo de arquitecturas como un hexágono, es arbitrario, lo que pretende reflejar es el hecho de que las comunicaciones con el exterior tienen la misma naturaleza y deben asumir las mismas reglas.</p>
+
+<!--more-->
+<p>La consecuencia que se deriva de aplicar esta arquitectura, es desarrollar aplicaciones que son:</p>
+
+<ul>
+  <li>Independientes de agentes externos</li>
+  <li>Independientes de framework</li>
+  <li>Independientes de la UI</li>
+  <li>Independientes de BBDD</li>
+  <li>Más adaptables</li>
+  <li>Más reutilizables</li>
+  <li>Más mantenibles</li>
+  <li>Más testeables</li>
+</ul>
+
+<h2 id="motivación">Motivación</h2>
+
+<p>En su origen, Alistair Cockburn hacía mucho énfasis en evitar la infiltración de la lógica de negocio en la interfaz de usuario. Ya que si esto se produce, da lugar a una arquitectura fuertemente acoplada entre el frontend y el backend.</p>
+
+<p>Su propuesta pretende mejorar las siguientes áreas durante el ciclo de vida del producto:</p>
+
+<ul>
+  <li>automatización de pruebas</li>
+  <li>desacoplamiento de los detalles de infraestructura</li>
+  <li>conexion con nuevos agentes</li>
+  <li>abstraer el dominio de la comunicación con agentes externos, usuarios, comandos, lotes, etc.</li>
+</ul>
+
+<p>Según él, la raíz del problema está en la interacción entre el interior y el exterior, la regla es que los detalles del código interior no deben filtrarse al exterior.</p>
+
+<p>Para conseguirlo, propone utilizar el patrón de puertos y adaptadores:</p>
+
+<ul>
+  <li>Los <strong>puertos</strong> son las interfaces que definen la interacción con el exterior y exponen únicamente el contrato con nuestro dominio, dejando que toda la lógica de transformación esté de puertas afuera y no se contamine el interior. Pueden ser de varios tipos:
+    <ul>
+      <li><strong>de entrada</strong>. Sirven para hacer peticiones a la aplicación</li>
+      <li><strong>de salida</strong>. Sirven para solicitar información desde la aplicación</li>
+      <li><strong>de entrada/salida</strong>. En general son adaptadores bidireccionales a un recurso. No representan comunicación bidireccional, sino que la aplicación es capaz de escuchar peticiones del recurso y hacerle peticiones.</li>
+    </ul>
+  </li>
+  <li>Los <strong>adaptadores</strong> son precisamente la forma de conectarse a través de dicho contrato. Establecen la comunicación y la conversión de datos entre el dominio y el exterior. Lo relevante en esta interacción, es que los adaptadores no pertenecen al core, así que pueden implementarse por separado. Para cada dispositivo externo habrá un adaptador, y será de entrada o salida dependiendo del sentido de la comunicación. Por lo general habrá varios adaptadores para cada tipo de puerto, uno por tipo de tecnología o agente que puede conectarse a ese puerto.</li>
+</ul>
+
+<p>Además, diferencia entre dos tipos de puertos y adaptadores. Los <strong>primarios o driving</strong>, son los que habilitan conexiones hacia nuestra aplicación, y los <strong>secundarios</strong> que permiten conexiones desde nuestra aplicación. También tienen otra particularidad, en los que conectan la UI con la aplicación, el adaptador pertence a la capa de aplicación (API) del caso de uso, mientras que en el caso de backend, es éste el que inyecta el adaptador específico para permitir la comunicación con la utilidad. El núcleo en ambos casos solo debe conocer la interfaz.</p>
+
+<!--<figure>-->
+<!--    <img src="/assets/images/posts/2021/20210205_111.jpg#wide" alt="Esquema" style="margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; -webkit-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);-->
+<!-- -moz-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);-->
+<!--box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);-->
+<!--"/>-->
+<!--    -->
+<!--    <figcaption class="caption-text">puertos y adaptadores</figcaption>-->
+<!--    -->
+<!--</figure>-->
+
+<figure>
+    <img src="/assets/images/posts/2021/20210205_111.jpg#wide" alt="Esquema" style="margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; border-radius: 10px;
+box-shadow: 0 0 15px #ddd;" />
+    
+    <figcaption class="caption-text">puertos y adaptadores</figcaption>
+    
+</figure>
+
+<!--<figure>-->
+<!--    <img src="/assets/images/posts/2021/20210205_111.jpg#wide" alt="Esquema" style="margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center;"/>-->
+<!--    -->
+<!--    <figcaption class="caption-text">puertos y adaptadores</figcaption>-->
+<!--    -->
+<!--</figure>-->
+
+<h2 id="arquitectura-hexagonal-y-ddd">Arquitectura hexagonal y DDD</h2>
+
+<p>Al ser el dominio el elemento en torno al cual se define este enfoque, encaja muy bien con la idea de <strong>Domian Driven Design</strong>, ya que se puede implementar su lógica sin atender a detalles específicos.</p>
+
+<p>Sin embargo, un punto de vista crítico con todo este planteamiento, que considero muy interesante es el de <a href="https://javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/">Javier Vélez Reyes - Ni Nueva Ni Arquitectura Ni Hexagonal</a>, que argumenta razonadamente en contra de esta propuesta, como un enfoque geniunamente arquitectónico y rebajándolo a un tipo de patrón o recomendación de buenas prácticas, que símplemnte aglutina conceptos preexistentes.</p>
+
+<h2 id="referencias">Referencias</h2>
+
+<ul>
+  <li><a href="http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture">Alistair Cockburn</a></li>
+  <li><a href="https://medium.com/@edusalguero/arquitectura-hexagonal-59834bb44b7f">Edu Slaguero: Arquitectura hexagonal</a></li>
+  <li><a href="https://blog.allegro.tech/2020/05/hexagonal-architecture-by-example.html">Allegro Tech Blog</a></li>
+  <li><a href="https://herbertograca.com/2017/09/14/ports-adapters-architecture/">hgraca</a></li>
+  <li><a href="https://www.adictosaltrabajo.com/2019/07/02/capas-cebollas-y-colmenas-arquitecturas-en-el-backend/">Capas, cebollas y colmenas: arquitecturas en el backend</a></li>
+  <li><a href="https://javiervelezreyes.com/ni-nueva-ni-arquitectura-ni-hexagonal/">Ni Nueva Ni Arquitectura Ni Hexagonal</a></li>
+</ul>
+
+            </div>
+            <footer class="post-footer">
+                
+                <p class="post-tags">
+                     
+                    <a href='tag/diseño/'>Diseño</a>
+                    
+                     
+                    <a href='tag/arquitectura/'>Arquitectura</a>
+                    
+                    
+                </p>
+                
+                <div class="post-share">
+                    <span class="post-share-title">Share:</span>
+                    <a target="_blank" href="https://twitter.com/share?text=Arquitectura+hexagonal&amp;url=http://www.ratondbiblioteca.comarquitectura-hexagonal">Twitter</a>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://www.ratondbiblioteca.comarquitectura-hexagonal">Facebook</a>
+                </div><!-- .share-post -->
+            </footer>
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/author_box_image.jpg" alt="David Pérez's Picture"
+                        class="avatar"></div>
+                <div class="author-details">
+                    <h2 class="author-title">About David Pérez</h2>
+                    <p class="author-description">Psicólogo de corazón, informático de profesión, llevo más de veinte años dedicado al desarrollo de software en los que me he especializado en el ecosistema Java/Spring</p>
+                </div>
+            </div>
+            
+
+        </article>
+        
+        <section class="read-next inner">
+            <h2 class="read-next-title">Read Next</h2>
+            
+            
+        </section><!-- .read-next -->
+    </main><!-- .site-main -->
+</div><!-- .site-content -->
+
+        
+
+        
+
+        <footer id="colophon" class="site-footer outer">
+            <div class="site-footer-inside">
+                <p class="social-links">
+    
+    
+    
+    <a href="https://github.com/DavidPerezRod" target="_blank">
+        <span class="fa-github fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">GitHub</span>
+    </a>
+    
+    
+    
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/dabizme" target="_blank">
+        <span class="fa-linkedin fa" aria-hidden="true"></span>
+        <span class="screen-reader-text">Linkedin</span>
+    </a>
+    
+    
+</p>
+                <p class="site-info">
+                    <a href="#">Ratón de Biblioteca</a> &copy; 2021 . Horace theme by
+                    <a target="_blank" href="https://justgoodthemes.com/">JustGoodThemes</a>. <br />
+                    Powered by <a target="_blank" href="https://jekyllrb.com/">Jekyll</a>.
+                </p>
+                <p class="back-to-top">
+                    <a id="top-button" class="top-button" href="#page">
+                        <span class="icon-arrow-up" aria-hidden="true"></span>
+                        <span class="screen-reader-text">Back to top</span>
+                    </a>
+                </p>
+            </div><!-- .site-footer-inside -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site -->
+    <div id="site-overlay" class="site-overlay"></div>
+    <aside id="sidebar" class="sidebar">
+	<div class="sidebar-scrollable">
+		<div class="sidebar-inside">
+			<button id="sidebar-hide" class="sidebar-toggle"><span class="screen-reader-text">Close Sidebar</span><span
+				    aria-hidden="true" class="icon-close"></span></button>
+			<nav id="sidebar-navigation" class="widget site-navigation">
+				<h2 class="widget-title">Explore Site</h2>
+				<ul class="menu">
+					
+						<li class="menu-item"><a href="/about/">About</a></li>
+					
+						<li class="menu-item"><a href="/contact/">Contact Me</a></li>
+					
+				</ul>
+			</nav>
+			
+<section class="widget widget-text">
+    <h2 class="widget-title">About Ratón de Biblioteca</h2>
+    <p>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</p>
+</section>
+
+
+<section class="widget widget-recent-posts">
+    <h2 class="widget-title">Recent Articles</h2>
+    <ul>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
+                    <time class="published" datetime="??">February 5, 2021</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/arquitectura-hexagonal">Arquitectura hexagonal</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/arquitectura-hexagonal">
+                <img src="http://localhost:4000/assets/images/posts/2021/20210205_thumbnail.jpg"
+                    alt="Arquitectura hexagonal">
+            </a>
+            
+        </li>
+        
+    </ul>
+</section>
+
+<!-- Create a sorted array of tags -->
+ 
+<section class="widget widget-tagcloud">
+    <h2 class="widget-title">Tags</h2>
+    <div class="tagcloud">
+        
+        <a href='http://www.ratondbiblioteca.com/tag/arquitectura/'>Arquitectura</a>
+        
+        <a href='http://www.ratondbiblioteca.com/tag/diseño/'>Diseño</a>
+        
+    </div>
+</section>
+
+
+		</div><!-- .sidebar-inside -->
+	</div><!-- .sidebar-scrollable -->
+</aside><!-- .sidebar -->
+    
+    <!-- Javascript Assets -->
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/plugins.js"></script>
+    <script src="/assets/js/custom.js"></script>
+
+</body>
+
+</html>
