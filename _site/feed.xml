@@ -5,8 +5,8 @@
     <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 30 Jun 2021 21:28:04 +0200</pubDate>
-    <lastBuildDate>Wed, 30 Jun 2021 21:28:04 +0200</lastBuildDate>
+    <pubDate>Sun, 04 Jul 2021 08:20:02 +0200</pubDate>
+    <lastBuildDate>Sun, 04 Jul 2021 08:20:02 +0200</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -107,7 +107,112 @@ box-shadow: 0 0 15px #ddd;&quot; /&gt;
         
         <category>Diseño</category>
         
-        <category>Arquitectura</category>
+        <category>Patrones de Arquitectura</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Entity-Boundary-Control</title>
+        <description>&lt;p&gt;Aunque la dio a conocer Robert C. Martin, fue propuesta por Ivar Jacobson en 1992. Su nombre original, Entity-Interface-Control, se cambió para evitar confusiones con conceptos similares de los lenguajes de programación. Es un patrón arquitectónico utilizado en el diseño de software orientado a objetos, en el que los casos de uso categorizan las clases que componen el software según su responsabilidad.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“La arquitectura de una aplicación se rige por sus casos de uso.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Jacobson, proponía este modelo para el análisis y diseño de actividades, y su representación mediante sus estereotipos UML.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Su propósito, producir una arquitectura agnóstica a la implementación, que no esté atada a una plataforma, aplicación, lenguaje o marco específico; y cuyos elementos estén unidos por un acoplamiento lo más débil posible. Esta es su principal diferencia con MVC, ya que ni controladores ni entidades, conocen el medio por el que se está accediendo a ellas. En MVC, siempre hay una dependencia con el mecanismo de entrega.&lt;/p&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/EBC/20210125_1.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; -webkit-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!-- -moz-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;flujo boundary-controller-entity&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;/assets/images/posts/2021/EBC/20210125_1.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; border-radius: 10px;
+box-shadow: 0 0 15px #ddd;&quot; /&gt;
+    
+    &lt;figcaption class=&quot;caption-text&quot;&gt;flujo boundary-controller-entity&lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/EBC/20210125_1.jpg#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center;&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;flujo boundary-controller-entity&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;p&gt;Sus responsabilidades:&lt;/p&gt;
+
+&lt;h2 id=&quot;entity&quot;&gt;Entity&lt;/h2&gt;
+
+&lt;p&gt;Las entidades contienen los datos utilizados por el sistema y los cálculos asociados a estos. Cada entidad representa un concepto relevante dentro del dominio del problema, y mantiene la identidad de los datos persistentes.&lt;/p&gt;
+
+&lt;p&gt;Adicionalmente, Jacobson propone que la naturaleza de la lógica de la entidad, es tal, que si la estructura de los datos que contiene cambia, las operaciones sobre estos datos también tendrán que cambiar. Por eso deben estar ubicados juntos.&lt;/p&gt;
+
+&lt;p&gt;Por lo tanto, al igual que defienden otros autores, esta recomendación va en contra de lo que actualmente se conoce como entidades anémicas &lt;a href=&quot;https://es.wikipedia.org/wiki/Modelo_de_dominio_an%C3%A9mico&quot;&gt;modelo anémico&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;boundary-interfaz&quot;&gt;Boundary (interfaz)&lt;/h2&gt;
+
+&lt;p&gt;Se trata de los objetos que modelan todas las interacciones del sistema con los actores externos. Cualquier interacción del sistema con un actor, debe pasar por un objeto Boundary. Ya sea la implementación de la funcionalidad para el procesamiento de datos para una interfaz grafica de usuario o de un API web. Por lo tanto su naturaleza es funcional, aceptan solicitudes y producen respuestas como ressultado.&lt;/p&gt;
+
+&lt;h2 id=&quot;controlador&quot;&gt;Controlador&lt;/h2&gt;
+
+&lt;p&gt;La relevancia de este último tipo de objeto es proporcionar la comunicación entre interfaces y entidades, evitando que éstas últimas propaguen su lógica a los actores externos con los que se comunican.&lt;/p&gt;
+
+&lt;p&gt;Los controladores, según Jacobson son aquellos que orquestan un caso de uso, así como los objetos que contengan un comportamiento relevante para éste y que no sean una entidad o una interfaz. Aceptan peticiones de o límites, deciden qué hacer con ellas y manipulan el estado de la aplicación. Por tanto conocen los modelos de petición y respuesta, &lt;a href=&quot;https://www.programmersought.com/article/9051259027/&quot;&gt;&lt;strong&gt;DTO’s&lt;/strong&gt;&lt;/a&gt;. De alguna manera son la implementación concreta de los límites.&lt;/p&gt;
+
+&lt;h2 id=&quot;interacciones&quot;&gt;Interacciones&lt;/h2&gt;
+
+&lt;p&gt;En cuanto a las interacciones que se pueden dar entre los tres tipos de objetos, deben ser tales, que respeten la Ley de Demeter LoD, o principio del mínimo conocimiento. Se trata de una directriz de diseño para el desarrollo de software, especialmente de programas orientados a objetos. En su forma general, la LoD es un caso específico de acoplamiento débil.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cada unidad debe tener un conocimiento limitado sobre otras unidades: sólo se deben tratar con las unidades “estrechamente” relacionadas.&lt;/li&gt;
+  &lt;li&gt;Cada unidad debería hablar sólo con sus amigos; no hablar con extraños.&lt;/li&gt;
+  &lt;li&gt;Y sólo, con sus amigos inmediatos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La noción fundamental es que un objeto determinado debe suponer lo menos posible sobre la estructura o las propiedades de cualquier otra cosa (incluidos sus subcomponentes), de acuerdo con el principio de “ocultación de información”. Puede considerarse como un corolario del principio de mínimo privilegio, que dicta que un módulo sólo posee la información y los recursos necesarios para su propósito legítimo&lt;/p&gt;
+
+&lt;h3 id=&quot;reglas&quot;&gt;Reglas&lt;/h3&gt;
+
+&lt;p&gt;Así pues, de acuerdo a LoD, y los elementos que componene este patrón de arquitectura, las interacciones que se pueden dar entre ellos son:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cada caso de uso se representa por una clase de control&lt;/li&gt;
+  &lt;li&gt;Cada relación entre el caso de uso y un actor, se representa por una clase Boundary&lt;/li&gt;
+  &lt;li&gt;Los actores solo conocen y se comunican con boundaries.&lt;/li&gt;
+  &lt;li&gt;Las boundaries deben comunicarse exclusivamente con actores y clases de control&lt;/li&gt;
+  &lt;li&gt;Los controladores se comunican con boundaries y entidades, y si lo requiriesen con otros controladores&lt;/li&gt;
+  &lt;li&gt;Las entidades, pueden comunicarse con otras entidades o controladores.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Entity-control-boundary&quot;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://herbertograca.com/2017/08/24/ebi-architecture/#more-10264&quot;&gt;EBI Architecture&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ebi.readthedocs.io/en/latest/core.html&quot;&gt;Entity-Boundary-Interactor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.programmersought.com/article/9051259027/&quot;&gt;Java Terminology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.visual-paradigm.com/guide/uml-unified-modeling-language/robustness-analysis-tutorial/&quot;&gt;A Practical Tutorial on Robustness Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 25 Jan 2021 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/ebc</link>
+        <guid isPermaLink="true">http://localhost:4000/ebc</guid>
+        
+        <category>Diseño</category>
+        
+        <category>Patrones de Arquitectura</category>
         
         
       </item>
