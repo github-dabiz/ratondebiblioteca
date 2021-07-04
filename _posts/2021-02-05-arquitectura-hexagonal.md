@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Arquitectura hexagonal"
-tags: [ Diseño, Patrones de Arquitectura ]
+tags: [ Diseño, Arquitectura ]
 featured_image_thumbnail: assets/images/posts/2021/20210205_thumbnail.jpg
 featured_image: assets/images/posts/2021/20210205P.jpg
 featured: true
