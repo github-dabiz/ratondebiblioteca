@@ -1,5 +1,5 @@
---- 
-# Only the essential Sass file needs front matter. The dashes are enough. 
+---
+# Only the essential Sass file needs front matter. The dashes are enough.
 ---
 
 /**
@@ -1124,4 +1124,19 @@
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+.image-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.figure-caption {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  font-size: 10px;
+}
+
+

@@ -6,8 +6,6 @@ featured_image_thumbnail: assets/images/posts/2021/20211105rbac/20211105_thumbna
 featured_image: assets/images/posts/2021/20211105rbac/20211105.jpg
 featured: false
 ---
-## Definición
-
 El control de acceso basado en roles es un paradigma de seguridad que permite controlar las acciones que los usuarios de un sistema/organización pueden realizar sobre los recursos del mismo, en función de los privilegios por rol. Se basa en una estructura de tres niveles:
 
 * usuarios
@@ -38,8 +36,10 @@ Por último, será necesario identificar el **_Ámbito_** al que se aplica el co
 * Derechos de acceso a aplicaciones
 * Autorización de solicitudes
 
-{% include image-caption.html imageurl="/assets/images/posts/2021/20211105rbac/20211105model-image.png#wide"
-title="Esquema" caption="modelo entidad-relación RBAC" %}
+<figure>
+ <img class="image-center" src="/assets/images/posts/2021/20211105rbac/20211105model-image.png" alt="modelo entidad-relación RBAC"/>
+<figcaption class="figure-caption">modelo entidad-relación RBAC</figcaption>
+</figure>
 
 ### Asignación de permisos
 

@@ -5,15 +5,13 @@
     <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 06 Nov 2021 20:33:46 +0100</pubDate>
-    <lastBuildDate>Sat, 06 Nov 2021 20:33:46 +0100</lastBuildDate>
+    <pubDate>Sun, 07 Nov 2021 12:06:08 +0100</pubDate>
+    <lastBuildDate>Sun, 07 Nov 2021 12:06:08 +0100</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
         <title>RBAC - Role based access Control</title>
-        <description>&lt;h2 id=&quot;definición&quot;&gt;Definición&lt;/h2&gt;
-
-&lt;p&gt;El control de acceso basado en roles es un paradigma de seguridad que permite controlar las acciones que los usuarios de un sistema/organización pueden realizar sobre los recursos del mismo, en función de los privilegios por rol. Se basa en una estructura de tres niveles:&lt;/p&gt;
+        <description>&lt;p&gt;El control de acceso basado en roles es un paradigma de seguridad que permite controlar las acciones que los usuarios de un sistema/organización pueden realizar sobre los recursos del mismo, en función de los privilegios por rol. Se basa en una estructura de tres niveles:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;usuarios&lt;/li&gt;
@@ -49,30 +47,10 @@
   &lt;li&gt;Autorización de solicitudes&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;!--&lt;figure&gt;--&gt;
-&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/20211105rbac/20211105model-image.png#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; -webkit-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
-&lt;!-- -moz-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
-&lt;!--box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
-&lt;!--&quot;/&gt;--&gt;
-&lt;!--    --&gt;
-&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;modelo entidad-relación RBAC&lt;/figcaption&gt;--&gt;
-&lt;!--    --&gt;
-&lt;!--&lt;/figure&gt;--&gt;
-
 &lt;figure&gt;
-    &lt;img src=&quot;/assets/images/posts/2021/20211105rbac/20211105model-image.png#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; border-radius: 10px;
-box-shadow: 0 0 15px #ddd;&quot; /&gt;
-    
-    &lt;figcaption class=&quot;caption-text&quot;&gt;modelo entidad-relación RBAC&lt;/figcaption&gt;
-    
+ &lt;img class=&quot;image-center&quot; src=&quot;/assets/images/posts/2021/20211105rbac/20211105model-image.png&quot; alt=&quot;modelo entidad-relación RBAC&quot; /&gt;
+&lt;figcaption class=&quot;figure-caption&quot;&gt;modelo entidad-relación RBAC&lt;/figcaption&gt;
 &lt;/figure&gt;
-
-&lt;!--&lt;figure&gt;--&gt;
-&lt;!--    &lt;img src=&quot;/assets/images/posts/2021/20211105rbac/20211105model-image.png#wide&quot; alt=&quot;Esquema&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center;&quot;/&gt;--&gt;
-&lt;!--    --&gt;
-&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;modelo entidad-relación RBAC&lt;/figcaption&gt;--&gt;
-&lt;!--    --&gt;
-&lt;!--&lt;/figure&gt;--&gt;
 
 &lt;h3 id=&quot;asignación-de-permisos&quot;&gt;Asignación de permisos&lt;/h3&gt;
 
