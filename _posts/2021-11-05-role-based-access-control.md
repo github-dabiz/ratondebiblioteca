@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "RBAC - Role based access Control"
-tags: [ seguridad ]
+tags: [ Seguridad ]
 featured_image_thumbnail: assets/images/posts/2021/20211105rbac/20211105_thumbnail.jpg
 featured_image: assets/images/posts/2021/20211105rbac/20211105.jpg
 featured: false
@@ -93,3 +93,4 @@ Sin embargo, la adopción de este sistema de control de accesos conlleva una ser
 * [Manage Engine. Prevenga los ataques basados en archivos con un control de acceso efectivo basado en roles](https://www.manageengine.com/es/device-control/role-based-access-control.html)
 * [Ático 34. Control de acceso basado en roles (RBAC): Una forma de mejorar la seguridad del sistema](https://protecciondatos-lopd.com/empresas/control-de-acceso-basado-en-roles-rbac/)
 * [Foto de Gráfico creado por rawpixel.com](http://www.rawpixel.com)
+* [Tutorials24x7. Guide To Design Database For RBAC In MySQL](https://mysql.tutorials24x7.com/blog/guide-to-design-database-for-rbac-in-mysql)

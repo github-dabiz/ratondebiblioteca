@@ -5,9 +5,137 @@
     <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 07 Nov 2021 12:06:08 +0100</pubDate>
-    <lastBuildDate>Sun, 07 Nov 2021 12:06:08 +0100</lastBuildDate>
+    <pubDate>Mon, 04 Apr 2022 22:26:15 +0200</pubDate>
+    <lastBuildDate>Mon, 04 Apr 2022 22:26:15 +0200</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Autorización a Recursos: OAuth 2.0 </title>
+        <description>&lt;p&gt;OAuth 2.0, &lt;strong&gt;&lt;em&gt;Open Authorization 2.0&lt;/em&gt;&lt;/strong&gt;, es la segunda versión del estándar abierto Open Authorization. Propuesto por Blaine Cook y Chris Messina, es un framework de autorización que permite a servcios cliente obtener acceso limitado a la información de la cuenta de un usuario en un servicio proveedor, mediante comunicación HTTP.
+La clave está en que el servicio cliente delega la autenticación de un usuario al servicio que aloja la cuenta de éste, y obtiene autorización de acceso a la cuenta.&lt;/p&gt;
+
+&lt;p&gt;De esta forma se permite a aplicaciones de terceros tener un acceso limitado a los datos de los usuarios, sin tener que proporcionar sus credenciales, por lo que desacopla la autenticación de la autorización de datos.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h3 id=&quot;actores&quot;&gt;Actores&lt;/h3&gt;
+
+&lt;p&gt;Los actores que intervienen en una operación OAuth 2.0 son cuatro:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Propietario del Recurso (usuario)&lt;/li&gt;
+  &lt;li&gt;Servidor de autorización&lt;/li&gt;
+  &lt;li&gt;Servidor de recursos&lt;/li&gt;
+  &lt;li&gt;Cliente (aplicación de terceros)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;usuario&quot;&gt;Usuario&lt;/h4&gt;
+
+&lt;p&gt;Es el propietario del recurso que se va a compartir entre el Servidor de Recursos y la aplicación de terceros.&lt;/p&gt;
+
+&lt;h4 id=&quot;servidor-de-autorización&quot;&gt;Servidor de Autorización&lt;/h4&gt;
+
+&lt;p&gt;Verifica la identidad del usuario (autenticación) y genera tokens de acceso a la aplicación (autorización)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Conceptos
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Autenticación&lt;/em&gt;&lt;/strong&gt;: el proceso de verificación de la identidad del usuario&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Autorización&lt;/em&gt;&lt;/strong&gt;: proceso mediante el cual se controla el acceso a determinados recursos.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Token de acceso&lt;/em&gt;&lt;/strong&gt;: Es el elemento que otorga el Servidor de Autorización a la aplicación de terceros, para realizar solicitudes en nombre del usuario. Aunque a priori, no es necesario que tengan ningún formato en particular, en lo que respecta a la aplicación cliente es una cadena opaca. Se utilizará en la comunicación entre el Servidor de Recursos y la Aplicación Cliente para verificar los privilegios de acceso a los recursos solicictados.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;servidor-de-recursos&quot;&gt;Servidor de Recursos&lt;/h4&gt;
+
+&lt;p&gt;Alojar las cuentas de usuario. En general desde el punto de vista de la comunicación entre cliente y proveedor, no suele existir diferencia entre Servidor de Autorización y Servidor de Recursos. El cliente se comunica de forma transparente mediante protocolo HTTP con ambos sin conocer cuál es cuál.&lt;/p&gt;
+
+&lt;h4 id=&quot;aplicación-cliente&quot;&gt;Aplicación cliente&lt;/h4&gt;
+
+&lt;p&gt;Es la aplicación que desear acceder a la información de la cuenta del usuario en el Servidor de Recursos. Antes de poder hacerlo debe ser autorizada por el usuario, y la validación realizada a través del Servidor de Autorización.&lt;/p&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Photo by &lt;a href=&quot;https://unsplash.com/@gregbulla?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Greg Bulla&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/&quot;&gt;Unsplash&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://es.wikipedia.org/wiki/OAuth&quot;&gt;OAuth - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ionos.es/digitalguide/servidores/seguridad/oauth-y-su-version-oauth2/&quot;&gt;IONOS Digital Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.paradigmadigital.com/dev/oauth-2-0-equilibrio-y-usabilidad-en-la-securizacion-de-apis/&quot;&gt;Paradigma Digital&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es&quot;&gt;Una introducción a OAuth2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.oauth.com/oauth2-servers/access-tokens/&quot;&gt;Access Tokens&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 02 Apr 2022 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/oauth2</link>
+        <guid isPermaLink="true">http://localhost:4000/oauth2</guid>
+        
+        <category>Seguridad</category>
+        
+        <category>Identidad Digital</category>
+        
+        <category>Comunicaciones</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>IdM - Gestión Identidad Digital</title>
+        <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;IdM (Identity Management)&lt;/em&gt;&lt;/strong&gt; por sus siglas en inglés, o también &lt;strong&gt;&lt;em&gt;Gestión de Identidades y Accesos (IAM/IdAM Identity Access Management)&lt;/em&gt;&lt;/strong&gt; , es el marco de políticas y tecnologías que garantiza que solamente las personas autorizadas, y nadie más, tengan acceso a los recursos tecnológicos que necesitan para realizar su trabajo.&lt;/p&gt;
+
+&lt;p&gt;Esta gestión evita el acceso no autorizado a sistemas y recursos, ayuda a evitar el robo de datos, y genera alertas cuando personas o programas no autorizados intentan acceder a éstos. Pero las soluciones de gestión de identidades, no solo protegen el acceso al software y a los datos, también protegen los recursos hardware, redes, servidores, dispositivos de almacenamiento, etc.&lt;/p&gt;
+
+&lt;p&gt;Aunque IdM e IdAM son términos que se utilizan indistintamente, la gestión de identidades se centra más en la identidad de los usuarios, sus roles, grupos a los que pertenece, y en consecuencia a sus permisos.  Mientras que IdM también se centra en proteger las identidades a través de tecnologias tales como contraseñas, biometrías, o identidades digitales.&lt;/p&gt;
+
+&lt;h2 id=&quot;gestión-de-identidades-vs-gestión-de-acceso&quot;&gt;Gestión de identidades vs Gestión de acceso&lt;/h2&gt;
+
+&lt;h3 id=&quot;gestión-de-identidades&quot;&gt;Gestión de identidades&lt;/h3&gt;
+
+&lt;p&gt;Desde el punto de vista de las organizaciones, la identidad digital hace referencia a la información que permite identificar univocamente a la persona física y su atributos asociados tales como: información de contacto, posición en la empresa, rol, etc.. La gestión de identidad es el conjunto de procesos y tecnologías para la captura, registro, gestión de los usuarios y sus atributos en la organización, así como el seguimiento de los mismos y control de cambios. Esto asegura que los usuarios están debidamente autenticados, autorizados y auditados, según normativa y de acuerdo a la política organizacional.&lt;/p&gt;
+
+&lt;h3 id=&quot;gestión-de-acceso&quot;&gt;Gestión de acceso&lt;/h3&gt;
+
+&lt;p&gt;Es otorgar a un usuario el derecho de acceso a un servicio, al mismo tiempo que se previene el acceso a usuarios no autorizados. Los procesos de Gestión de Acceso ponen en práctica las políticas definidas por la Gestión de Seguridad.&lt;/p&gt;
+
+&lt;p&gt;Para verificar la identidad, un sistema informático buscará características específicas del usuario, habitualmente conocidas como &lt;em&gt;factores de autenticación&lt;/em&gt;. Los tres más utilizados son:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Algo que sabe el usuario. Se trata de una información que debe tener el usuario, como su user/password.&lt;/li&gt;
+  &lt;li&gt;Algo que tiene el usuario. En este caso, se trata de un objeto físico otorgado a los usuarios autorizados, como usb, teléfono inteligente, etc.&lt;/li&gt;
+  &lt;li&gt;Algo que el usuario es. Hace referencia a alguna propiedad física del propio cuerpo, como la cara o la huella dactilar.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;computación-en-la-nube-e-idam&quot;&gt;Computación en la nube e IdAM&lt;/h2&gt;
+
+&lt;p&gt;Hasta hace poco, antes de la adopción generalizada de la computación en la nube, los sistemas que había que burlar para acceder a información confidencial se basaban en el perímetro de red de la empresa. Así, antes había que superar el firewall corporativo que protegía la red interna o acceder físicamente al servidor en el que se encontrase la información.&lt;/p&gt;
+
+&lt;p&gt;Sin embargo, con la computación en la nube la información se almacena en servidores remotos fuera del perímetro de red corporativo. De forma que para acceder a la información confidencial, es necesario iniciar sesión mediante un navegador o una aplicación. Así que la forma más rápida de obtener esta información ilícitamente es hacerse con las credenciales de inicio de un usuario autorizado.&lt;/p&gt;
+
+&lt;p&gt;Es en este ámbito en el que la Gestión de identidades y accesos ayuda a prevenir ataques basados en identidad y fugas de datos debidos a usuarios no autorizados con demasiados privilegios (escalada de privilegios)&lt;/p&gt;
+
+&lt;h2 id=&quot;fuentes&quot;&gt;Fuentes&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.vmware.com/es/topics/glossary/content/identity-management.html&quot;&gt;VMware - Gestión de identidades&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Identity_management&quot;&gt;Wikipedia - Identity management&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.computerweekly.com/es/definicion/IAM-o-Sistema-de-gestion-de-accesos-e-identidades&quot;&gt;Computer Weekly - IAM o Sistema de gestión de accesos e identidades&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.es.it-processmaps.com/index.php/ITIL_Gestion_del_Acceso&quot;&gt;ITIL Gestión del Acceso&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Photo by &lt;a href=&quot;https://unsplash.com/@carsonarias?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Carson Arias&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/s/photos/identity?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&quot;&gt;Unsplash&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cloudflare.com/es-es/learning/access-management/what-is-identity-and-access-management/&quot;&gt;CloudFlare - ¿Qué es la gestión de identidad y acceso?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 06 Nov 2021 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/gestion-identidad-digital</link>
+        <guid isPermaLink="true">http://localhost:4000/gestion-identidad-digital</guid>
+        
+        <category>Seguridad</category>
+        
+        <category>Identidad Digital</category>
+        
+        <category>Transformación Digital</category>
+        
+        
+      </item>
     
       <item>
         <title>RBAC - Role based access Control</title>
@@ -131,13 +259,14 @@
   &lt;li&gt;&lt;a href=&quot;https://www.manageengine.com/es/device-control/role-based-access-control.html&quot;&gt;Manage Engine. Prevenga los ataques basados en archivos con un control de acceso efectivo basado en roles&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://protecciondatos-lopd.com/empresas/control-de-acceso-basado-en-roles-rbac/&quot;&gt;Ático 34. Control de acceso basado en roles (RBAC): Una forma de mejorar la seguridad del sistema&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.rawpixel.com&quot;&gt;Foto de Gráfico creado por rawpixel.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mysql.tutorials24x7.com/blog/guide-to-design-database-for-rbac-in-mysql&quot;&gt;Tutorials24x7. Guide To Design Database For RBAC In MySQL&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Fri, 05 Nov 2021 00:00:00 +0100</pubDate>
         <link>http://localhost:4000/role-based-access-control</link>
         <guid isPermaLink="true">http://localhost:4000/role-based-access-control</guid>
         
-        <category>seguridad</category>
+        <category>Seguridad</category>
         
         
       </item>
