@@ -21,6 +21,10 @@
 <lastmod>2022-04-02T00:00:00+02:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/oauth2-protocolo</loc>
+<lastmod>2022-04-14T00:00:00+02:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/about/</loc>
 </url>
 <url>
@@ -51,6 +55,12 @@
 <loc>http://localhost:4000/tag/transformaci%C3%B3n-digital/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/tag/comunicaciones/</loc>
+<loc>http://localhost:4000/tag/autorizaci%C3%B3n/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/oauth2/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/oauth/</loc>
 </url>
 </urlset>

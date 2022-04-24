@@ -4,8 +4,8 @@ title:  "Arquitectura hexagonal"
 tags: [ Diseño, Arquitectura ]
 featured_image_thumbnail: assets/images/posts/2021/20210205_thumbnail.jpg
 featured_image: assets/images/posts/2021/20210205P.jpg
-featured: true
-hidden: true
+featured: false
+hidden: false
 ---
 
 Propuesta en 2005 por [Alistair Cockburn](http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture), también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.
@@ -32,7 +32,7 @@ Su propuesta pretende mejorar las siguientes áreas durante el ciclo de vida del
 
 * automatización de pruebas
 * desacoplamiento de los detalles de infraestructura
-* conexion con nuevos agentes
+* conexión con nuevos agentes
 * abstraer el dominio de la comunicación con agentes externos, usuarios, comandos, lotes, etc.
 
 Según él, la raíz del problema está en la interacción entre el interior y el exterior, la regla es que los detalles del código interior no deben filtrarse al exterior.

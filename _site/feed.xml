@@ -5,55 +5,305 @@
     <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Apr 2022 22:26:15 +0200</pubDate>
-    <lastBuildDate>Mon, 04 Apr 2022 22:26:15 +0200</lastBuildDate>
+    <pubDate>Sun, 24 Apr 2022 15:42:50 +0200</pubDate>
+    <lastBuildDate>Sun, 24 Apr 2022 15:42:50 +0200</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
-        <title>Autorización a Recursos: OAuth 2.0 </title>
-        <description>&lt;p&gt;OAuth 2.0, &lt;strong&gt;&lt;em&gt;Open Authorization 2.0&lt;/em&gt;&lt;/strong&gt;, es la segunda versión del estándar abierto Open Authorization. Propuesto por Blaine Cook y Chris Messina, es un framework de autorización que permite a servcios cliente obtener acceso limitado a la información de la cuenta de un usuario en un servicio proveedor, mediante comunicación HTTP.
-La clave está en que el servicio cliente delega la autenticación de un usuario al servicio que aloja la cuenta de éste, y obtiene autorización de acceso a la cuenta.&lt;/p&gt;
+        <title>OAuth 2.0: Protocolo y contenido</title>
+        <description>&lt;p&gt;En el anterior post &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;./oauth2&quot;&gt;Autorización a Recursos: OAuth 2.0&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; se realizó una primera aproximación conceptual
+a OAuth2. En este segundo post, el objetivo es introducir algunos elementos más, que quedaron pendientes, así como
+profundizar a nivel técnico en el flujo más habitual de los Grant Types, el Código de Autorización&lt;/p&gt;
 
-&lt;p&gt;De esta forma se permite a aplicaciones de terceros tener un acceso limitado a los datos de los usuarios, sin tener que proporcionar sus credenciales, por lo que desacopla la autenticación de la autorización de datos.&lt;/p&gt;
+&lt;h2 id=&quot;protocolo-de-comunicación&quot;&gt;Protocolo de Comunicación&lt;/h2&gt;
+
+&lt;p&gt;Además de los actores y el flujo conversacional, para entender bien todos los pasos que se dan desde la petición de
+autorización inicial, hasta la obtención de la información por parte del cliente, hay que conocer tanto el protocolo que
+se utiliza para transmitir la información como su intérprete.&lt;/p&gt;
+
+&lt;p&gt;OAuth2 es un framework pensado ser implementado mediante protocolo de comunicación HTTP, basado en el principio de
+cliente-servidor, en el que las peticiones son enviadas por una entidad: el agente del usuario (o un proxy a petición de
+uno). La
+mayoría de las veces el agente del usuario es un navegador Web, pero podría ser cualquier otro programa.&lt;/p&gt;
+
+&lt;p&gt;El intérprete es el elemento que articula la comunicación entre todos los actores, Usuario - Aplicación Cliente, Usuario&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Servidor de autorización, y en menor medida Aplicación Cliente - Servidor de Recursos. En este último caso,
+intervienen en las redirecciones HTTP.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Aunque también importante, no se va a profundizar en la estructura de la petición y respuesta HTTP por considerar que
+queda fuera del alcance de artículo, aunque se puede encontrar una descripción detallada
+en &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/HTTP/Overview&quot;&gt;Generalidades del protocolo HTTP&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;registro-de-la-aplicación-cliente&quot;&gt;Registro de la Aplicación Cliente&lt;/h2&gt;
+
+&lt;p&gt;Un paso importante que no se suele mencionar al explicar el flujo abstracto o flujo lógico de OAuth2, es el registro de
+la Aplicación Cliente en el Servidor de Autorización. Antes de que la Aplicación Cliente esté en condiciones de
+solicitar la autorización al Usuario y comunicarse con el Servidor de Autorizaciones, es necesario que este último la
+tenga registrada como una aplicación de confianza. Generalmente, esto se hace a través de un formulario de registro en
+la sección de “desarrolladores” o “API” del sitio web del Servidor de Recursos.&lt;/p&gt;
+
+&lt;p&gt;Uno de los datos que será necesario proporcionar, es la URI a la que el Servidor de Autorización deber redireccionar una
+vez que el usuario haya dado su autorización. En consecuencia, será un endpoint de la Aplicación Cliente en el que
+manejarán códigos de
+autorización o tokens de acceso.&lt;/p&gt;
+
+&lt;p&gt;Durante el proceso de registro, el Servidor de Autorizaciones, proporcionará al Cliente un identificador (CLIENT_ID), y
+un secreto (SECRET). El primero, es una cadena pública que identifica a la Aplicación Cliente, y el segundo se utiliza
+para verificar la identidad del Cliente, por lo que debe estar protegido de posibles ataques para evitar suplantaciones
+de identidad.&lt;/p&gt;
+
+&lt;h2 id=&quot;token-de-acceso&quot;&gt;Token de acceso&lt;/h2&gt;
+
+&lt;p&gt;Es el elemento que otorga el Servidor de Autorización a la Aplicación Cliente para realizar solicitudes en nombre del
+usuario. Se utilizará en la comunicación entre el Servidor de Recursos y la Aplicación Cliente para verificar los
+privilegios de acceso, la autorización.&lt;/p&gt;
+
+&lt;p&gt;Los tokens de acceso no tienen por qué tener un formato determinado. Pueden ser Bearer Tokens (al portador) o
+Sender-constrained (restringidos al emisor). Los tokens restringidos al emisor requieren que el cliente de OAuth
+demuestre la posesión de una clave privada para poder utilizar el token de acceso, de manera que el token de acceso por
+sí mismo no sería utilizable.&lt;/p&gt;
+
+&lt;p&gt;Hay una serie de propiedades de los tokens de acceso que son fundamentales para el modelo de seguridad de OAuth:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No deben ser leídos o interpretados por el cliente OAuth. El cliente OAuth no es el destinatario del token.&lt;/li&gt;
+  &lt;li&gt;No transmiten al cliente OAuth la identidad del usuario ni ninguna otra información sobre el mismo.&lt;/li&gt;
+  &lt;li&gt;Solo deben utilizarse para realizar solicitudes al servidor de recursos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Existen distintos tipos de token que se aplican en diferentes escenarios:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Access Token&lt;/li&gt;
+  &lt;li&gt;ID Token&lt;/li&gt;
+  &lt;li&gt;Refresh Token&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Los tokens de acceso se definen en OAuth, los tokens de identificación se definen en OpenID Connect.&lt;/p&gt;
+
+&lt;p&gt;Los tokens de acceso son lo que el cliente de OAuth utiliza para hacer peticiones a una API. El token de acceso está
+destinado a ser validado por la API. Un token de identificación contiene información sobre lo que sucedió cuando un
+usuario se autenticó, y está destinado a ser leído por el cliente de OAuth. El token de identificación también puede
+contener información sobre el usuario, como su nombre o dirección de correo electrónico, aunque esto no es un requisito
+de un token de identificación.&lt;/p&gt;
+
+&lt;p&gt;Aquí hay algunas otras diferencias entre los tokens de identificación y los tokens de acceso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Los tokens de identificación están pensados para ser leídos por el cliente OAuth. Los tokens de acceso están
+destinados a ser leídos por el servidor de recursos.&lt;/li&gt;
+  &lt;li&gt;Los tokens de identificación son JWTs. Los tokens de acceso pueden ser JWTs pero también pueden ser una cadena
+aleatoria.&lt;/li&gt;
+  &lt;li&gt;Los tokens de identificación nunca deben ser enviados a una API. Los tokens de acceso nunca deben ser leídos por el
+cliente.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por otro lado, un Refresh Token en OAuth2 es una cadena que el cliente de OAuth puede utilizar para obtener un nuevo
+token de acceso sin la interacción del usuario. No debe permitir al cliente obtener ningún acceso más allá del alcance
+de la concesión original. Existe para permitir a los servidores de autorización utilizar tiempos de vida cortos para los
+tokens de acceso sin necesidad de involucrar al usuario cuando el token expira.&lt;/p&gt;
+
+&lt;h2 id=&quot;scopes&quot;&gt;Scopes&lt;/h2&gt;
+
+&lt;p&gt;Los &lt;strong&gt;&lt;em&gt;scopes&lt;/em&gt;&lt;/strong&gt; en OAuth2 se utilizan para identificar los recursos a los que puede tener acceso la Aplicación Cliente.
+Cuando el cliente solicita la autorización al Servidor de Autorización, envía la lista de ámbitos para los que se
+solicita. El Servidor de Autorizaciones utiliza esta lista de ámbitos para generar la pantalla de consentimiento que
+presentará al usuario durante el proceso de Autorización. Si el usuario acepta, el Servidor de Autorización emite un
+token con el código de autorización.&lt;/p&gt;
+
+&lt;h2 id=&quot;respuesta-oauth&quot;&gt;Respuesta OAuth&lt;/h2&gt;
+
+&lt;p&gt;La respuesta de todos los Grant Types producen un formato de salida semejante, una estructura JSON con los siguientes
+valores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;access_token&lt;/em&gt;&lt;/strong&gt; (requerido) Cadena cifrada que se utilizará posteriormente para autorizar las peticiones.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;token_type&lt;/em&gt;&lt;/strong&gt; (requerido) Identifica el tipo de token, se suele utilizar el tipo “Bearer”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;expires_in&lt;/em&gt;&lt;/strong&gt; (recomendado) Indica la duración en segundos del access_token. Una vez caduca puede ser renovado
+usando el Grant Type de Refresh Token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;refresh_token&lt;/em&gt;&lt;/strong&gt; (opcional) Permiten volver a generar el un token de acceso. Se solicitará su valor durante el
+proceso de Refresh Token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;scope&lt;/em&gt;&lt;/strong&gt; (opcional) Indica el ámbito de uso del access token. La AC solicitará información de un scope concreto
+durante la obtención del token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;id_token&lt;/em&gt;&lt;/strong&gt; (opcional) Si se utiliza un scope con valor “openid”, puede significar que se quiere utilizar OpenId
+Connect (OIDC) para solicitar una autorización a partir de una autenticación. En ese supuesto, puede aparecer un JWT
+extra donde encontraremos la información sobre el perfil del usuario.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La aplicación debe garantizar que el access token no sea accesible para otras aplicaciones en el mismo dispositivo. El
+token de acceso solo se puede usar a través de una conexión HTTPS, ya que pasarlo a través de un canal no encriptado
+haría que sea trivial para terceros interceptarlo.&lt;/p&gt;
+
+&lt;p&gt;Una vez visto el protocolo de comunicación y alguno de los contenidos específicos que define el framework, es posible
+profundizar en todos los pasos que se dan durante
+un &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;./oauth2-codigo-autorizacion&quot;&gt;flujo de comunicación con Código de Autorización&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Photo by &lt;a href=&quot;https://unsplash.com/@yannikm&quot;&gt;Yannik Mika&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/&quot;&gt;Unsplash&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://es.wikipedia.org/wiki/OAuth&quot;&gt;OAuth - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ionos.es/digitalguide/servidores/seguridad/oauth-y-su-version-oauth2/&quot;&gt;IONOS Digital Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.paradigmadigital.com/dev/oauth-2-0-equilibrio-y-usabilidad-en-la-securizacion-de-apis/&quot;&gt;Paradigma Digital&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es&quot;&gt;Una introducción a OAuth2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.oauth.com/oauth2-servers/access-tokens/&quot;&gt;Access Tokens&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.returngis.net/2019/04/oauth-2-0-openid-connect-y-json-web-tokens-jwt-que-es-que/&quot;&gt;OAuth 2.0, OpenID Connect y JSON Web Tokens (JWT) ¿Qué es qué?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programacionymas.com/blog/protocolo-oauth-2&quot;&gt;Explicación del protocolo OAuth 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programmerclick.com/article/31691178110/&quot;&gt;Principio de autenticación y autorización OAuth2.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/cd/E39820_01/doc.11121/gateway_docs/content/oauth_flows.html&quot;&gt;API Gateway OAuth 2.0 Authentication Flows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techgeeknext.com/spring-boot-security/oauth2-introduction&quot;&gt;OAuth 2 Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://betterprogramming.pub/the-complete-guide-to-oauth-2-0-and-openid-connect-protocols-35ebc1cbc11a&quot;&gt;The Complete Guide to OAuth 2.0 and OpenID Connect Protocols&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.developerro.com/2019/03/19/oauth-authentication-grant-types/&quot;&gt;OAuth 2.0 Grant Types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/HTTP/Overview&quot;&gt;Generalidades del protocolo HTTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 14 Apr 2022 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/oauth2-protocolo</link>
+        <guid isPermaLink="true">http://localhost:4000/oauth2-protocolo</guid>
+        
+        <category>Seguridad</category>
+        
+        <category>Identidad Digital</category>
+        
+        <category>Autorización</category>
+        
+        <category>OAuth2</category>
+        
+        <category>OAuth</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Autorización de Recursos: OAuth 2.0</title>
+        <description>&lt;p&gt;&lt;strong&gt;&lt;em&gt;Open Authorization 2.0 (OAuth2)&lt;/em&gt;&lt;/strong&gt; es un estándar diseñado para permitir que una aplicación acceda a recursos alojados por otras aplicaciones web en nombre de un usuario. Sustituyó a OAuth 1.0 en 2012 y es ahora el estándar de facto de la industria para la autorización en línea.&lt;/p&gt;
+
+&lt;p&gt;OAuth 2.0 proporciona acceso consentido y restringe las acciones que la aplicación cliente puede realizar en los recursos en nombre del usuario, sin compartir nunca las credenciales de este, desacoplando autenticación de autorización&lt;/p&gt;
+
+&lt;p&gt;Aunque la web es la principal plataforma de OAuth 2, la especificación también describe cómo gestionar este tipo de acceso delegado a otros tipos de clientes (aplicaciones basadas en el navegador, aplicaciones web del lado del servidor, aplicaciones nativas/móviles, dispositivos conectados, etc.)&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;h3 id=&quot;actores&quot;&gt;Actores&lt;/h3&gt;
+&lt;p&gt;Un buen ejemplo que explica el funcionamiento del framework, es el que utiliza &lt;a href=&quot;https://www.paradigmadigital.com/dev/oauth-2-0-equilibrio-y-usabilidad-en-la-securizacion-de-apis/&quot;&gt;Paradigma Digital&lt;/a&gt; en su blog:&lt;/p&gt;
 
-&lt;p&gt;Los actores que intervienen en una operación OAuth 2.0 son cuatro:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;“De una manera simplificada, el uso de OAuth es análogo al uso de una tarjeta de acceso a un hotel.&lt;/em&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Propietario del Recurso (usuario)&lt;/li&gt;
-  &lt;li&gt;Servidor de autorización&lt;/li&gt;
-  &lt;li&gt;Servidor de recursos&lt;/li&gt;
-  &lt;li&gt;Cliente (aplicación de terceros)&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;Para obtener la tarjeta de acceso, el primer paso es pasar un proceso de autenticación tras el cual te dan la tarjeta (un access token), posteriormente puedes usar la tarjeta para acceder a los distintos partes del hotel (recursos de la API) a las cuales se tiene permiso para acceder o no dependiendo de la autorización.”&lt;/em&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;usuario&quot;&gt;Usuario&lt;/h4&gt;
+&lt;p&gt;Dada la complejidad que puede llegar a tener una comunicación OAuth2, su explicación se va a dividir en tres post, este primero en el que se abordarán los conceptos fundamentales y flujo funcional, un segundo post en el que se profundizará en otros elementos relacionados con el protocolo de comunicación, y un tercero en el que se explicará a bajo nivel el flujo de comunicación OAuth2 más habitual.&lt;/p&gt;
 
-&lt;p&gt;Es el propietario del recurso que se va a compartir entre el Servidor de Recursos y la aplicación de terceros.&lt;/p&gt;
-
-&lt;h4 id=&quot;servidor-de-autorización&quot;&gt;Servidor de Autorización&lt;/h4&gt;
-
-&lt;p&gt;Verifica la identidad del usuario (autenticación) y genera tokens de acceso a la aplicación (autorización)&lt;/p&gt;
+&lt;p&gt;La estructura será:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Conceptos
+  &lt;li&gt;Post 1
     &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Autenticación&lt;/em&gt;&lt;/strong&gt;: el proceso de verificación de la identidad del usuario&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Autorización&lt;/em&gt;&lt;/strong&gt;: proceso mediante el cual se controla el acceso a determinados recursos.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;&lt;em&gt;Token de acceso&lt;/em&gt;&lt;/strong&gt;: Es el elemento que otorga el Servidor de Autorización a la aplicación de terceros, para realizar solicitudes en nombre del usuario. Aunque a priori, no es necesario que tengan ningún formato en particular, en lo que respecta a la aplicación cliente es una cadena opaca. Se utilizará en la comunicación entre el Servidor de Recursos y la Aplicación Cliente para verificar los privilegios de acceso a los recursos solicictados.&lt;/li&gt;
+      &lt;li&gt;Actores&lt;/li&gt;
+      &lt;li&gt;Tipos de autorización&lt;/li&gt;
+      &lt;li&gt;Flujo lógico&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Post 2
+    &lt;ul&gt;
+      &lt;li&gt;Protocolo&lt;/li&gt;
+      &lt;li&gt;Registro de la aplicación cliente&lt;/li&gt;
+      &lt;li&gt;Token de acceso&lt;/li&gt;
+      &lt;li&gt;Respuesta OAuth&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Post 3
+    &lt;ul&gt;
+      &lt;li&gt;Código de Autorización: Diagrama de secuencia&lt;/li&gt;
+      &lt;li&gt;Código de Autorización: Cabeceras HTTP&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;servidor-de-recursos&quot;&gt;Servidor de Recursos&lt;/h4&gt;
+&lt;h2 id=&quot;1-actores&quot;&gt;1. Actores&lt;/h2&gt;
 
-&lt;p&gt;Alojar las cuentas de usuario. En general desde el punto de vista de la comunicación entre cliente y proveedor, no suele existir diferencia entre Servidor de Autorización y Servidor de Recursos. El cliente se comunica de forma transparente mediante protocolo HTTP con ambos sin conocer cuál es cuál.&lt;/p&gt;
+&lt;p&gt;Los actores que intervienen en una operación OAuth 2.0 son cuatro:&lt;/p&gt;
 
-&lt;h4 id=&quot;aplicación-cliente&quot;&gt;Aplicación cliente&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Propietario del Recurso &lt;strong&gt;&lt;em&gt;(PR)&lt;/em&gt;&lt;/strong&gt; o Usuario &lt;strong&gt;&lt;em&gt;(U)&lt;/em&gt;&lt;/strong&gt; de la Aplicación Cliente. Se utilizará indistintamente un término u otro.&lt;/li&gt;
+  &lt;li&gt;Servidor de Autorización &lt;strong&gt;&lt;em&gt;(SA)&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Servidor de Recursos &lt;strong&gt;&lt;em&gt;(SR)&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Aplicación Cliente &lt;strong&gt;&lt;em&gt;(AC)&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Es la aplicación que desear acceder a la información de la cuenta del usuario en el Servidor de Recursos. Antes de poder hacerlo debe ser autorizada por el usuario, y la validación realizada a través del Servidor de Autorización.&lt;/p&gt;
+&lt;h3 id=&quot;propietario-del-recurso&quot;&gt;Propietario del Recurso&lt;/h3&gt;
+
+&lt;p&gt;Es el usuario de la Aplicación Cliente, que a la vez posee una cuenta en el Servidor de Recursos, de la que se va compartir información con la Aplicación Cliente.&lt;/p&gt;
+
+&lt;h3 id=&quot;servidor-de-autorización&quot;&gt;Servidor de Autorización&lt;/h3&gt;
+
+&lt;p&gt;Es responsable del proceso de autenticación para verificar la identidad del Propietario del Recurso, y de la Aplicación Cliente. Emite tokens de acceso a la Aplicación Cliente  que autorizan el acceso a la información del Propietario del Recurso en el Servidor de Recursos.&lt;/p&gt;
+
+&lt;h3 id=&quot;servidor-de-recursos&quot;&gt;Servidor de Recursos&lt;/h3&gt;
+
+&lt;p&gt;Aloja las cuentas de usuario. En general desde el punto de vista de la comunicación entre cliente y proveedor, no suele existir diferencia entre Servidor de Autorización y Servidor de Recursos. El cliente se comunica de forma transparente mediante protocolo HTTP con ambos sin conocer cuál es cuál, ya que muchas compañías implementan un servidor que desempeña ambos roles.&lt;/p&gt;
+
+&lt;h3 id=&quot;aplicación-cliente&quot;&gt;Aplicación cliente&lt;/h3&gt;
+
+&lt;p&gt;Es la aplicación que desea acceder a la información de la cuenta del usuario en el Servidor de Recursos. Antes de poder hacerlo debe ser autorizada por el usuario, y por el Servidor de Autorización.&lt;/p&gt;
+
+&lt;p&gt;Además OAuth2 distingue entre Aplicaciones Cliente confidenciales y públicas. Las primeras son capaces de guardar una contraseña sin que esta sea expuesta, y las segundas no.&lt;/p&gt;
+
+&lt;h2 id=&quot;2-tipos-de-autorización-grant-types&quot;&gt;2. Tipos de autorización (Grant Types)&lt;/h2&gt;
+
+&lt;p&gt;Los tipos de autorización se corresponden con el grado de confianza entre Servidor de Recursos, la Aplicación Cliente, y el tipo de contenido. Dependiendo del tipo de autorización la secuencia de comunicación entre los actores varía. Los principales tipos de autorización son:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Código de autorización&lt;/strong&gt;: Se necesita la interacción entre Propietario del Recurso, Aplicación Cliente y Servidor de Autorización, para obtener una autorización de acceso al Servidor de Recursos.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Autorización implícita&lt;/strong&gt;: Es un flujo diseñado para aplicaciones que no pueden guardar de forma segura las credenciales que la identifican en el Servidor de Recursos.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Credenciales de Propietario del Recurso&lt;/strong&gt;: El Propietario del Recurso confía sus credenciales de acceso a la Aplicación Cliente. Este flujo impide la gestión de niveles de autorización, la Aplicación Cliente podrá acceder a todos los recursos del usuario.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Credenciales de cliente&lt;/strong&gt;: Se utiliza cuando una Aplicación Cliente quiere acceder a datos que no tienen propietario o no requieren autorización.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3-flujo-lógico&quot;&gt;3. Flujo lógico&lt;/h2&gt;
+
+&lt;p&gt;Una vez entendida la finalidad del framework y los actores implicados, el siguiente paso es describir las relaciones que se dan entre ellos. La secuencia de acciones que se da hasta que la Aplicación Cliente obtiene el recurso en el Servidor de Recursos es:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;El usuario accede a la Aplicación Cliente. Ésta para proporcionar servicio necesita acceder a la información del usuario en el Servidor de Recursos.&lt;/li&gt;
+  &lt;li&gt;La Aplicación Cliente solicita autorización al Usuario para acceder a su cuenta en el Servidor de Recursos.&lt;/li&gt;
+  &lt;li&gt;El Usuario concede la autorización.&lt;/li&gt;
+  &lt;li&gt;La Aplicación Cliente con la autorización concedida por el Propietario del Recurso, solicita un identificador de acceso al Servidor de Autorización.&lt;/li&gt;
+  &lt;li&gt;El Servidor de Autorización proporciona credenciales de acceso a la Aplicación Cliente mediante un Access Token. La fase de autorización es completada.&lt;/li&gt;
+  &lt;li&gt;La Aplicación Cliente presenta el access token al Servidor de Recursos&lt;/li&gt;
+  &lt;li&gt;El Servidor de Recursos pregunta al Servidor de Autorización por la validez del token recibido&lt;/li&gt;
+  &lt;li&gt;Si el access token es válido el Servidor de Recursos, entrega la información solicitada a la Aplicación Cliente.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2022/20220402-oauth2/oauth-flow.jpg#wide&quot; alt=&quot;Flujo Oauth&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; -webkit-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!-- -moz-box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--box-shadow: 12px 29px 81px 0px rgba(0,0,0,0.75);--&gt;
+&lt;!--&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;Flujo OAuth&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;figure&gt;
+    &lt;img src=&quot;/assets/images/posts/2022/20220402-oauth2/oauth-flow.jpg#wide&quot; alt=&quot;Flujo Oauth&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center; border-radius: 10px;
+box-shadow: 0 0 15px #ddd;&quot; /&gt;
+    
+    &lt;figcaption class=&quot;caption-text&quot;&gt;Flujo OAuth&lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+&lt;!--&lt;figure&gt;--&gt;
+&lt;!--    &lt;img src=&quot;/assets/images/posts/2022/20220402-oauth2/oauth-flow.jpg#wide&quot; alt=&quot;Flujo Oauth&quot; style=&quot;margin-left: auto; margin-right: auto; display: block; width: 90%; height: auto; alignment: center;&quot;/&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--    &lt;figcaption class=&quot;caption-text&quot;&gt;Flujo OAuth&lt;/figcaption&gt;--&gt;
+&lt;!--    --&gt;
+&lt;!--&lt;/figure&gt;--&gt;
+
+&lt;p&gt;El flujo anterior, aunque válido para entender las implicaciones a nivel funcional, desde el punto de vista técnico es incompleto, ya que, no se menciona nada sobre el protocolo, agente de comunicación, ámbitos (scopes) a los que puede tener acceso el Cliente, o condiciones de registro de la Aplicación Cliente.&lt;/p&gt;
+
+&lt;p&gt;En las próximas entradas se profundizará paulatinamente en el resto de elementos, hasta llegar a las cabeceras de las peticiones y respuestas HTTP: &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;./oauth2-protocolo&quot;&gt;OAuth 2.0: Protocolo y contenido &lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
 
@@ -64,6 +314,14 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
   &lt;li&gt;&lt;a href=&quot;https://www.paradigmadigital.com/dev/oauth-2-0-equilibrio-y-usabilidad-en-la-securizacion-de-apis/&quot;&gt;Paradigma Digital&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es&quot;&gt;Una introducción a OAuth2&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.oauth.com/oauth2-servers/access-tokens/&quot;&gt;Access Tokens&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.returngis.net/2019/04/oauth-2-0-openid-connect-y-json-web-tokens-jwt-que-es-que/&quot;&gt;OAuth 2.0, OpenID Connect y JSON Web Tokens (JWT) ¿Qué es qué?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programacionymas.com/blog/protocolo-oauth-2&quot;&gt;Explicación del protocolo OAuth 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programmerclick.com/article/31691178110/&quot;&gt;Principio de autenticación y autorización OAuth2.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/cd/E39820_01/doc.11121/gateway_docs/content/oauth_flows.html&quot;&gt;API Gateway OAuth 2.0 Authentication Flows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techgeeknext.com/spring-boot-security/oauth2-introduction&quot;&gt;OAuth 2 Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://betterprogramming.pub/the-complete-guide-to-oauth-2-0-and-openid-connect-protocols-35ebc1cbc11a&quot;&gt;The Complete Guide to OAuth 2.0 and OpenID Connect Protocols&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.developerro.com/2019/03/19/oauth-authentication-grant-types/&quot;&gt;OAuth 2.0 Grant Types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://auth0.com/intro-to-iam/what-is-oauth-2/&quot;&gt;Auth0&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 02 Apr 2022 00:00:00 +0200</pubDate>
@@ -74,7 +332,11 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
         
         <category>Identidad Digital</category>
         
-        <category>Comunicaciones</category>
+        <category>Autorización</category>
+        
+        <category>OAuth2</category>
+        
+        <category>OAuth</category>
         
         
       </item>
@@ -300,7 +562,7 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
 &lt;ul&gt;
   &lt;li&gt;automatización de pruebas&lt;/li&gt;
   &lt;li&gt;desacoplamiento de los detalles de infraestructura&lt;/li&gt;
-  &lt;li&gt;conexion con nuevos agentes&lt;/li&gt;
+  &lt;li&gt;conexión con nuevos agentes&lt;/li&gt;
   &lt;li&gt;abstraer el dominio de la comunicación con agentes externos, usuarios, comandos, lotes, etc.&lt;/li&gt;
 &lt;/ul&gt;
 

@@ -108,6 +108,8 @@
 <div class="featured-posts outer">
     
         
+    
+        
             <article class=" post-featured inner">
     <header class="post-header">
         <div class="post-meta">
@@ -115,17 +117,18 @@
             <time class="published" datetime="2022-04-02">April 2, 2022</time>
         </div><!-- .post-meta -->
         <h2 class="post-title">
-            <a href="/oauth2" rel="bookmark">Autorización a Recursos: OAuth 2.0 </a>
+            <a href="/oauth2" rel="bookmark">Autorización de Recursos: OAuth 2.0</a>
         </h2>
     </header><!-- .post-header -->
     
-        <a href="http://localhost:4000/oauth2" class="post-thumbnail"><img src="assets/images/posts/2022/20220402-oauth/20220402-oauth.jpg" alt="Autorización a Recursos: OAuth 2.0 "></a>
+        <a href="http://localhost:4000/oauth2" class="post-thumbnail"><img src="assets/images/posts/2022/20220402-oauth2/20220402-oauth.jpg" alt="Autorización de Recursos: OAuth 2.0"></a>
     
     <div class="post-content">
-         <p>OAuth 2.0, <strong><em>Open Authorization 2.0</em></strong>, es la segunda versión del estándar abierto Open Authorization. Propuesto por Blaine Cook y Chris Messina, es un framework de autorización que permite a servcios cliente obtener acceso limitado a la información de la cuenta de un usuario en un servicio proveedor, mediante comunicación HTTP.
-La clave está en que el servicio cliente delega la autenticación de un usuario al servicio que aloja la cuenta de éste, y obtiene autorización de acceso a la cuenta.</p>
+         <p><strong><em>Open Authorization 2.0 (OAuth2)</em></strong> es un estándar diseñado para permitir que una aplicación acceda a recursos alojados por otras aplicaciones web en nombre de un usuario. Sustituyó a OAuth 1.0 en 2012 y es ahora el estándar de facto de la industria para la autorización en línea.</p>
 
-<p>De esta forma se permite a aplicaciones de terceros tener un acceso limitado a los datos de los usuarios, sin tener que proporcionar sus credenciales, por lo que desacopla la autenticación de la autorización de datos.</p>
+<p>OAuth 2.0 proporciona acceso consentido y restringe las acciones que la aplicación cliente puede realizar en los recursos en nombre del usuario, sin compartir nunca las credenciales de este, desacoplando autenticación de autorización</p>
+
+<p>Aunque la web es la principal plataforma de OAuth 2, la especificación también describe cómo gestionar este tipo de acceso delegado a otros tipos de clientes (aplicaciones basadas en el navegador, aplicaciones web del lado del servidor, aplicaciones nativas/móviles, dispositivos conectados, etc.)</p>
 
 
         <p class="post-tags">
@@ -134,7 +137,11 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
                   
                 <a href='/tag/identidad- digital/'>Identidad Digital</a>
                   
-                <a href='/tag/comunicaciones/'>Comunicaciones</a>
+                <a href='/tag/autorización/'>Autorización</a>
+                  
+                <a href='/tag/oauth2/'>OAuth2</a>
+                  
+                <a href='/tag/oauth/'>OAuth</a>
                   
             </p>
         <p class="read-more">
@@ -150,39 +157,6 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
         
     
         
-            <article class=" post-featured inner">
-    <header class="post-header">
-        <div class="post-meta">
-            <span class="featured-badge">Featured</span> &sol; 
-            <time class="published" datetime="2021-02-05">February 5, 2021</time>
-        </div><!-- .post-meta -->
-        <h2 class="post-title">
-            <a href="/arquitectura-hexagonal" rel="bookmark">Arquitectura hexagonal</a>
-        </h2>
-    </header><!-- .post-header -->
-    
-        <a href="http://localhost:4000/arquitectura-hexagonal" class="post-thumbnail"><img src="assets/images/posts/2021/20210205P.jpg" alt="Arquitectura hexagonal"></a>
-    
-    <div class="post-content">
-         <p>Propuesta en 2005 por <a href="http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture">Alistair Cockburn</a>, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.</p>
-
-<p>El motivo de representar este tipo de arquitecturas como un hexágono, es arbitrario, lo que pretende reflejar es el hecho de que las comunicaciones con el exterior tienen la misma naturaleza y deben asumir las mismas reglas.</p>
-
-
-        <p class="post-tags">
-                  
-                <a href='/tag/diseño/'>Diseño</a>
-                  
-                <a href='/tag/arquitectura/'>Arquitectura</a>
-                  
-            </p>
-        <p class="read-more">
-            <a class="button" href="/arquitectura-hexagonal" class="more-link">Continue Reading</a>
-        </p>
-        
-    </div><!-- .post-content -->
-</article><!-- .post -->
-        
     
         
     
@@ -194,6 +168,51 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
     <div class="post-feed-title inner">Latest Articles</div>
     
     <div class="post-feed inner-wide">
+        
+            <article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <time class="published" datetime="2022-04-14">April 14, 2022</time>
+        </div><!-- .post-meta -->
+        <h2 class="post-title">
+            <a href="http://localhost:4000/oauth2-protocolo" rel="bookmark">OAuth 2.0: Protocolo y contenido</a>
+        </h2>
+    </header><!-- .post-header -->
+    
+    <a class="post-thumbnail" href="/oauth2-protocolo">
+        <img src="http://localhost:4000/assets/images/posts/2022/20220414-oauth2-canal/20220414-oauth2-protocolo-thumbnail.jpg"
+            alt="OAuth 2.0: Protocolo y contenido">
+    </a>
+    
+    <div class="post-content">
+        <p>En el anterior post Autorización a Recursos: OAuth 2.0 se realizó una primera aproximación conceptual a OAuth2. En este segundo post, el objetivo es introducir algunos elementos más, que quedaron pendientes, así como profundizar a nivel técnico en el flujo... </p>
+        <p class="post-tags">
+            
+            
+            
+            <a href='/tag/seguridad/'>Seguridad</a>
+            
+            
+            
+            <a href='/tag/identidad-digital/'>Identidad Digital</a>
+            
+            
+            
+            <a href='/tag/autorización/'>Autorización</a>
+            
+            
+            
+            <a href='/tag/oauth2/'>OAuth2</a>
+            
+            
+            
+            <a href='/tag/oauth/'>OAuth</a>
+            
+            
+            
+        </p>
+    </div><!-- .post-content -->
+</article><!-- .post -->
         
             <article class="post">
     <header class="post-header">
@@ -254,6 +273,39 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
             
             
             <a href='/tag/seguridad/'>Seguridad</a>
+            
+            
+            
+        </p>
+    </div><!-- .post-content -->
+</article><!-- .post -->
+        
+            <article class="post">
+    <header class="post-header">
+        <div class="post-meta">
+            <time class="published" datetime="2021-02-05">February 5, 2021</time>
+        </div><!-- .post-meta -->
+        <h2 class="post-title">
+            <a href="http://localhost:4000/arquitectura-hexagonal" rel="bookmark">Arquitectura hexagonal</a>
+        </h2>
+    </header><!-- .post-header -->
+    
+    <a class="post-thumbnail" href="/arquitectura-hexagonal">
+        <img src="http://localhost:4000/assets/images/posts/2021/20210205_thumbnail.jpg"
+            alt="Arquitectura hexagonal">
+    </a>
+    
+    <div class="post-content">
+        <p>Propuesta en 2005 por Alistair Cockburn, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el... </p>
+        <p class="post-tags">
+            
+            
+            
+            <a href='/tag/diseño/'>Diseño</a>
+            
+            
+            
+            <a href='/tag/arquitectura/'>Arquitectura</a>
             
             
             
@@ -376,16 +428,33 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
         <li>
             <div class="post-header">
                 <div class="post-meta">
+                    <time class="published" datetime="??">April 14, 2022</time>
+                </div>
+                <div class="post-title">
+                    <a href="http://localhost:4000/oauth2-protocolo">OAuth 2.0: Protocolo y contenido</a>
+                </div>
+            </div>
+            
+            <a class="post-thumbnail" href="/oauth2-protocolo">
+                <img src="http://localhost:4000/assets/images/posts/2022/20220414-oauth2-canal/20220414-oauth2-protocolo-thumbnail.jpg"
+                    alt="OAuth 2.0: Protocolo y contenido">
+            </a>
+            
+        </li>
+        
+        <li>
+            <div class="post-header">
+                <div class="post-meta">
                     <time class="published" datetime="??">April 2, 2022</time>
                 </div>
                 <div class="post-title">
-                    <a href="http://localhost:4000/oauth2">Autorización a Recursos: OAuth 2.0 </a>
+                    <a href="http://localhost:4000/oauth2">Autorización de Recursos: OAuth 2.0</a>
                 </div>
             </div>
             
             <a class="post-thumbnail" href="/oauth2">
-                <img src="http://localhost:4000/assets/images/posts/2022/20220402-oauth/20220402-oauth-thumbnail.jpg"
-                    alt="Autorización a Recursos: OAuth 2.0 ">
+                <img src="http://localhost:4000/assets/images/posts/2022/20220402-oauth2/20220402-oauth-thumbnail.jpg"
+                    alt="Autorización de Recursos: OAuth 2.0">
             </a>
             
         </li>
@@ -407,23 +476,6 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
             
         </li>
         
-        <li>
-            <div class="post-header">
-                <div class="post-meta">
-                    <time class="published" datetime="??">November 5, 2021</time>
-                </div>
-                <div class="post-title">
-                    <a href="http://localhost:4000/role-based-access-control">RBAC - Role based access Control</a>
-                </div>
-            </div>
-            
-            <a class="post-thumbnail" href="/role-based-access-control">
-                <img src="http://localhost:4000/assets/images/posts/2021/20211105rbac/20211105_thumbnail.jpg"
-                    alt="RBAC - Role based access Control">
-            </a>
-            
-        </li>
-        
     </ul>
 </section>
 
@@ -435,11 +487,15 @@ La clave está en que el servicio cliente delega la autenticación de un usuario
         
         <a href='http://www.ratondbiblioteca.com/tag/arquitectura/'>Arquitectura</a>
         
-        <a href='http://www.ratondbiblioteca.com/tag/comunicaciones/'>Comunicaciones</a>
+        <a href='http://www.ratondbiblioteca.com/tag/autorización/'>Autorización</a>
         
         <a href='http://www.ratondbiblioteca.com/tag/diseño/'>Diseño</a>
         
         <a href='http://www.ratondbiblioteca.com/tag/identidad- digital/'>Identidad Digital</a>
+        
+        <a href='http://www.ratondbiblioteca.com/tag/oauth/'>OAuth</a>
+        
+        <a href='http://www.ratondbiblioteca.com/tag/oauth2/'>OAuth2</a>
         
         <a href='http://www.ratondbiblioteca.com/tag/seguridad/'>Seguridad</a>
         
