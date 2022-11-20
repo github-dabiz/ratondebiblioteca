@@ -5,9 +5,187 @@
     <description>Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Apr 2022 15:42:50 +0200</pubDate>
-    <lastBuildDate>Sun, 24 Apr 2022 15:42:50 +0200</lastBuildDate>
+    <pubDate>Sat, 24 Sep 2022 10:46:36 +0200</pubDate>
+    <lastBuildDate>Sat, 24 Sep 2022 10:46:36 +0200</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Pruebas de Software: Tipología</title>
+        <description>&lt;p&gt;Este post es el inicio de una serie en la que trataré de profundizar en los distintos tipos de pruebas de software, en cuanto a objetivos que persiguen, planteamiento, ejecución y otras características de interés. Como punto de partida, se va a exponer una categorización de pruebas de software que enlazará directamente con sus post específicos en los casos en los que aplique. En el resto de casos, simplemente quedarán indicadas en este post como parte de la jerarquía.&lt;/p&gt;
+
+&lt;h2 id=&quot;criterios-de-clasificación&quot;&gt;Criterios de clasificación&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tipo de ejecución&lt;/li&gt;
+  &lt;li&gt;Aproximación al problema&lt;/li&gt;
+  &lt;li&gt;Objeto de verificación&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tipo-de-ejecución&quot;&gt;Tipo de ejecución&lt;/h2&gt;
+
+&lt;p&gt;Atendiendo al tipo de ejecución las pruebas de software pueden clasificarse como:&lt;/p&gt;
+
+&lt;h3 id=&quot;automáticas&quot;&gt;Automáticas&lt;/h3&gt;
+
+&lt;p&gt;Este tipo de pruebas son ejecutadas por máquinas, generalmente se ejecutan mediante scripts.&lt;/p&gt;
+
+&lt;p&gt;Algunas de sus ventajas respecto a las pruebas manuales son:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;su ejecución es más rápida&lt;/li&gt;
+  &lt;li&gt;son más fiables&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Entre sus inconvenientes se encuentran:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;su calidad depende de la calidad de los scripts&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sin embargo, por su naturaleza, las pruebas automáticas son un componente clave tanto para la integración continua como para la entrega continua y, por tanto, para asegurar la calidad del software.&lt;/p&gt;
+
+&lt;h3 id=&quot;manuales&quot;&gt;Manuales&lt;/h3&gt;
+
+&lt;p&gt;Se trata de pruebas llevadas a cabo por personas, que interactúan con el software verificando su correcto funcionamiento&lt;/p&gt;
+
+&lt;p&gt;El principal inconveniente de este tipo de pruebas es su coste, ya que se requiere personal dedicado a la ejecución de pruebas.
+Otro inconveniente es que el resultado se puede afectado por el error humano.&lt;/p&gt;
+
+&lt;p&gt;Entonces, ¿por qué realizar pruebas manuales?. Pues porque los test manuales probar en profundidad nuevas características del producto, para verificar su funcionamiento, proporcionar feedback de usabilidad y experiencia de usuario. Las pruebas automáticas tienen sentido sobre todo en los casos de pruebas de regresión para asegurar que las nuevas características no han introducido bugs en las funcionalidades anteriores.&lt;/p&gt;
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unsplash.com/@girlwithredhat?utm_source=unsplash&amp;amp;utm_medium=referral&amp;amp;utm_content=creditCopyText&amp;quot;&quot;&gt;Foto de Girl with Red Hat&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://es.wikipedia.org/wiki/Pruebas_de_software&quot;&gt;Pruebas de software - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Software_testing&quot;&gt;Software testing - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programacionymas.com/blog/tipos-de-testing-en-desarrollo-de-software&quot;&gt;Programación y más&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arbusta.net/testing-automation-manual-diferencias/&quot;&gt;Arbusta&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.bbvanexttechnologies.com/blogs/el-gran-dilema-del-qa-automatizacion-o-testing-manual/&quot;&gt;El gran dilema del QA: ¿Automatización o testing manual?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 26 Aug 2022 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/pruebas-software</link>
+        <guid isPermaLink="true">http://localhost:4000/pruebas-software</guid>
+        
+        <category>QA</category>
+        
+        <category>Testing</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>OAuth 2.0: Código de Autorización</title>
+        <description>&lt;p&gt;En el anterior post &lt;a href=&quot;./oauth2&quot;&gt;Autorización a Recursos: OAuth 2.0&lt;/a&gt; se realizó una primera aproximación conceptual a OAuth2. En este segundo post, el objetivo es introducir algunos elementos más, que quedaron pendientes, así como profundizar a nivel técnico en el flujo más habitual de los Grant Types, el Código de Autorización&lt;/p&gt;
+
+&lt;h2 id=&quot;protocolo-de-comunicación&quot;&gt;Protocolo de Comunicación&lt;/h2&gt;
+
+&lt;p&gt;Además de los actores y el flujo conversacional, para entender bien todos los pasos que se dan desde la petición de autorización inicial, hasta la obtención de la información por parte del cliente, hay que conocer tanto el protocolo que se utiliza para transmitir la información como sum intérprete.&lt;/p&gt;
+
+&lt;p&gt;OAuth2 es un framework pensado para implementarse mediante protocolo de comunicación HTTP, basado en el principio de cliente-servidor. Las peticiones son enviadas por una entidad: el agente del usuario (o un proxy a petición de uno). La mayoría de las veces el agente del usuario (cliente) es un navegador Web, pero podría ser cualquier otro programa.&lt;/p&gt;
+
+&lt;p&gt;El intérprete es el elemento que articula la comunicación entre todos los actores, Usuario - Aplicación Cliente, Usuario - Servidor de autorización, y en menor medida Aplicación Cliente - Servidor de Recursos. En este último caso, intervienen en las redirecciones HTTP.&lt;/p&gt;
+
+&lt;p&gt;Aunque también importante, no se va a profundizar en la estructura de la petición y respuesta HTTP por considerar que queda fuera del alcance de artículo, aunque se puede encontrar una descripción detallada en &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/HTTP/Overview&quot;&gt;Generalidades del protocolo HTTP&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;registro-de-la-aplicación-cliente&quot;&gt;Registro de la Aplicación Cliente&lt;/h2&gt;
+
+&lt;p&gt;Un paso importante que no se suele mencionar al explicar el flujo abstracto o flujo lógico de OAuth2, es el registro de la Aplicación Cliente en el Servidor de Autorización. Antes de que la Aplicación Cliente esté en condiciones de solicitar la autorización al Usuario y comunicarse con el Servidor de Autorizaciones, es necesario que este último la tenga registrada como una aplicación de confianza. Generalmente, esto se hace a través de un formulario de registro en la sección de “desarrolladores” o “API” del sitio web del Servidor de Recursos.&lt;/p&gt;
+
+&lt;p&gt;Uno de los datos que será necesario proporcionar, es la URI a la que ese deber redireccionar una vez que el usuario haya dado su autorización. En consecuencia, será un endpoint de la Aplicación Cliente en el que manejarán códigos de autorización o tokens de acceso.&lt;/p&gt;
+
+&lt;p&gt;Durante el proceso de registro, el Servidor de Autorizaciones, proporcionará al Cliente un identificador (CLIENT_ID), y un secreto (SECRET). El primero, es una cadena pública que identifica a la Aplicación Cliente, y el secreto se utiliza para verificar la identidad del Cliente, por lo que debe estar protegido de posibles ataques para evitar suplantaciones de identidad.&lt;/p&gt;
+
+&lt;h2 id=&quot;token-de-acceso&quot;&gt;Token de acceso&lt;/h2&gt;
+
+&lt;p&gt;Es el elemento que otorga el Servidor de Autorización a la Aplicación Cliente para realizar solicitudes en nombre del usuario. Se utilizará en la comunicación entre el Servidor de Recursos y la Aplicación Cliente para verificar los privilegios de acceso, la autorización.&lt;/p&gt;
+
+&lt;p&gt;Los tokens de acceso no tienen por qué tener un formato determinado. Pueden ser Bearer Tokens (al portador) o Sender-constrained (restringidos al emisor). Los tokens restringidos al emisor requieren que el cliente de OAuth demuestre la posesión de una clave privada para poder utilizar el token de acceso, de manera que el token de acceso por sí mismo no sería utilizable.&lt;/p&gt;
+
+&lt;p&gt;Hay una serie de propiedades de los tokens de acceso que son fundamentales para el modelo de seguridad de OAuth:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No deben ser leídos o interpretados por el cliente OAuth. El cliente OAuth no es el destinatario del token.&lt;/li&gt;
+  &lt;li&gt;No transmiten al cliente OAuth la identidad del usuario ni ninguna otra información sobre el mismo.&lt;/li&gt;
+  &lt;li&gt;Solo deben utilizarse para realizar solicitudes al servidor de recursos.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Existen distintos tipos de token que se aplican en diferentes escenarios:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Access Token&lt;/li&gt;
+  &lt;li&gt;ID Token&lt;/li&gt;
+  &lt;li&gt;Refresh Token&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Los tokens de acceso se definen en OAuth, los tokens de identificación se definen en OpenID Connect.&lt;/p&gt;
+
+&lt;p&gt;Los tokens de acceso son lo que el cliente de OAuth utiliza para hacer peticiones a una API. El token de acceso está destinado a ser validado por la API. Un token de identificación contiene información sobre lo que sucedió cuando un usuario se autenticó, y está destinado a ser leído por el cliente de OAuth. El token de identificación también puede contener información sobre el usuario, como su nombre o dirección de correo electrónico, aunque esto no es un requisito de un token de identificación.&lt;/p&gt;
+
+&lt;p&gt;Aquí hay algunas otras diferencias entre los tokens de identificación y los tokens de acceso:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Los tokens de identificación están pensados para ser leídos por el cliente OAuth. Los tokens de acceso están destinados a ser leídos por el servidor de recursos.&lt;/li&gt;
+  &lt;li&gt;Los tokens de identificación son JWTs. Los tokens de acceso pueden ser JWTs pero también pueden ser una cadena aleatoria.&lt;/li&gt;
+  &lt;li&gt;Los tokens de identificación nunca deben ser enviados a una API. Los tokens de acceso nunca deben ser leídos por el cliente.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por otro lado, un Refresh Token en OAuth2 es una cadena que el cliente de OAuth puede utilizar para obtener un nuevo token de acceso sin la interacción del usuario. No debe permitir al cliente obtener ningún acceso más allá del alcance de la concesión original. Existe para permitir a los servidores de autorización utilizar tiempos de vida cortos para los tokens de acceso sin necesidad de involucrar al usuario cuando el token expira.&lt;/p&gt;
+
+&lt;p&gt;## Scopes&lt;/p&gt;
+
+&lt;p&gt;Los &lt;strong&gt;&lt;em&gt;scopes&lt;/em&gt;&lt;/strong&gt; en OAuth2 se utilizan para identificar los recursos a los que puede tener acceso la Aplicación Cliente. Cuando el cliente solicita la autorización al Servidor de Autorización, envía la lista de ámbitos para los que se solicita. El Servidor de Autorizaciones utiliza esta lista de ámbitos para generar la pantalla de consentimiento que presentará al usuario durante el proceso de Autorización. Si el usuario acepta, el Servidor de Autorización emite un token con el código de autorización.&lt;/p&gt;
+
+&lt;h2 id=&quot;respuesta-oauth&quot;&gt;Respuesta OAuth&lt;/h2&gt;
+
+&lt;p&gt;La respuesta de todos los Grant Types producen un formato de salida semejante, una estructura JSON con los siguientes valores:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;access_token&lt;/em&gt;&lt;/strong&gt; (requerido) Cadena cifrada que se utilizará posteriormente para autorizar las peticiones.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;token_type&lt;/em&gt;&lt;/strong&gt; (requerido) Identifica el tipo de token, se suele utilizar el tipo “Bearer”.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;expires_in&lt;/em&gt;&lt;/strong&gt; (recomendado) Indica la duración en segundos del access_token. Una vez caduca puede ser renovado usando el Grant Type de Refresh Token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;refresh_token&lt;/em&gt;&lt;/strong&gt; (opcional) Permiten volver a generar el un token de acceso. Se solicitará su valor durante el proceso de Refresh Token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;scope&lt;/em&gt;&lt;/strong&gt; (opcional) Indica el ámbito de uso del access token. La AC solicitará información de un scope concreto durante la obtención del token.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;id_token&lt;/em&gt;&lt;/strong&gt; (opcional) Si se utiliza un scope con valor “openid”, puede significar que se quiere utilizar OpenId Connect (OIDC) para solicitar una autorización a partir de una autenticación. En ese supuesto, puede aparecer un JWT extra donde encontraremos la información sobre el perfil del usuario.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La aplicación debe garantizar que el access token no sea accesible para otras aplicaciones en el mismo dispositivo. El token de acceso solo se puede usar a través de una conexión HTTPS, ya que pasarlo a través de un canal no encriptado haría que sea trivial para terceros interceptarlo.&lt;/p&gt;
+
+&lt;p&gt;Una vez visto el protocolo de comunicación y alguno de los contenidos específicos que define el framework, es posible profundizar en todos los pasos que se dan durante un &lt;strong&gt;&lt;em&gt;&lt;a href=&quot;./oauth2-codigo-autorizacion&quot;&gt;flujo de comunicación con Código de Autorización&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;referencias&quot;&gt;Referencias&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Photo by &lt;a href=&quot;https://unsplash.com/@karinavitvitska&quot;&gt;Karina Vitvitska&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/&quot;&gt;Unsplash&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://es.wikipedia.org/wiki/OAuth&quot;&gt;OAuth - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.ionos.es/digitalguide/servidores/seguridad/oauth-y-su-version-oauth2/&quot;&gt;IONOS Digital Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.paradigmadigital.com/dev/oauth-2-0-equilibrio-y-usabilidad-en-la-securizacion-de-apis/&quot;&gt;Paradigma Digital&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.digitalocean.com/community/tutorials/una-introduccion-a-oauth-2-es&quot;&gt;Una introducción a OAuth2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.oauth.com/oauth2-servers/access-tokens/&quot;&gt;Access Tokens&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.returngis.net/2019/04/oauth-2-0-openid-connect-y-json-web-tokens-jwt-que-es-que/&quot;&gt;OAuth 2.0, OpenID Connect y JSON Web Tokens (JWT) ¿Qué es qué?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programacionymas.com/blog/protocolo-oauth-2&quot;&gt;Explicación del protocolo OAuth 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://programmerclick.com/article/31691178110/&quot;&gt;Principio de autenticación y autorización OAuth2.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.oracle.com/cd/E39820_01/doc.11121/gateway_docs/content/oauth_flows.html&quot;&gt;API Gateway OAuth 2.0 Authentication Flows&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.techgeeknext.com/spring-boot-security/oauth2-introduction&quot;&gt;OAuth 2 Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://betterprogramming.pub/the-complete-guide-to-oauth-2-0-and-openid-connect-protocols-35ebc1cbc11a&quot;&gt;The Complete Guide to OAuth 2.0 and OpenID Connect Protocols&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.developerro.com/2019/03/19/oauth-authentication-grant-types/&quot;&gt;OAuth 2.0 Grant Types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/es/docs/Web/HTTP/Overview&quot;&gt;Generalidades del protocolo HTTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 17 Apr 2022 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/oauth2-codigo-autorizacion</link>
+        <guid isPermaLink="true">http://localhost:4000/oauth2-codigo-autorizacion</guid>
+        
+        <category>Seguridad</category>
+        
+        <category>Identidad Digital</category>
+        
+        <category>Autorización</category>
+        
+        <category>OAuth2</category>
+        
+        <category>OAuth</category>
+        
+        
+      </item>
     
       <item>
         <title>OAuth 2.0: Protocolo y contenido</title>

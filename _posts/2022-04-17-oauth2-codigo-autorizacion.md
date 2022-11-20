@@ -4,8 +4,8 @@ title:  "OAuth 2.0: Código de Autorización"
 tags: [ Seguridad, Identidad Digital, Autorización, OAuth2, OAuth ]
 featured_image_thumbnail: assets/images/posts/2022/20220417-oauth2-codigo-autorizacion/20220414-oauth2-codigo-autorizacion-thumbnail.jpg
 featured_image: assets/images/posts/2022/20220417-oauth2-codigo-autorizacion/20220414-oauth2-codigo-autorizacion.jpg
-hidden: true
-published: false
+hidden: false
+published: true
 ---
 
 En el anterior post [Autorización a Recursos: OAuth 2.0](./oauth2) se realizó una primera aproximación conceptual a OAuth2. En este segundo post, el objetivo es introducir algunos elementos más, que quedaron pendientes, así como profundizar a nivel técnico en el flujo más habitual de los Grant Types, el Código de Autorización
