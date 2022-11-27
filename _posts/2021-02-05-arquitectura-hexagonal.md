@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Arquitectura hexagonal"
+date:   2021-02-05 15:01:35 +0300
 tags: [ Diseño, Arquitectura ]
-featured_image_thumbnail: assets/images/posts/2021/20210205_thumbnail.jpg
-featured_image: assets/images/posts/2021/20210205P.jpg
-featured: false
-hidden: false
+image:  '/images/posts/2021/20210205P.jpg'
+description: Propuesta en 2005 por Alistair Cockburn, también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.
+comments: true
 ---
 
 Propuesta en 2005 por [Alistair Cockburn](http://web.archive.org/web/20180121161736/http://alistair.cockburn.us/Hexagonal+Architecture), también conocida como arquitectura de puertos y adaptadores, su finalidad es desacoplar las capas de la aplicación, y permitir así que evolucionen de forma aislada. La forma de conseguirlo, considerar el dominio como el núcleo de la arquitectura, y proteger su estructura de interacciones con elementos externos.
@@ -48,8 +48,8 @@ Según él, la raíz del problema está en la interacción entre el interior y e
 
 Además, diferencia entre dos tipos de puertos y adaptadores. Los **primarios o driving**, son los que habilitan conexiones hacia nuestra aplicación, y los **secundarios** que permiten conexiones desde nuestra aplicación. También tienen otra particularidad, en los que conectan la UI con la aplicación, el adaptador pertence a la capa de aplicación (API) del caso de uso, mientras que en el caso de backend, es éste el que inyecta el adaptador específico para permitir la comunicación con la utilidad. El núcleo en ambos casos solo debe conocer la interfaz.
 
-{% include image-caption.html imageurl="/assets/images/posts/2021/20210205_111.jpg#wide"
-title="Esquema" caption="puertos y adaptadores" %}
+![Workflow]({{site.baseurl}}/images/posts/2021/20210205_111.jpg)
+*Puertos y adaptadores*
 
 ## Arquitectura hexagonal y DDD
 

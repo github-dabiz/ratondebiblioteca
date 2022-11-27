@@ -1,10 +1,12 @@
 ---
 layout: post
 title:  "OAuth 2.0: Protocolo y contenido"
+date:   2022-04-14 15:01:35 +0300
 tags: [ Seguridad, Identidad Digital, Autorización, OAuth2, OAuth ]
-featured_image_thumbnail: assets/images/posts/2022/20220417-oauth2-codigo-autorizacion/20220414-oauth2-codigo-autorizacion-thumbnail.jpg
-featured_image: assets/images/posts/2022/20220826-pruebas-software/post-image.jpg
-hidden: false
+image:  '/images/posts/2022/20220826-pruebas-software/post-image.jpg'
+description: FALTA POR AÑADIR LA DESCRIPCIÓN
+hidden: true
+comments: true
 ---
 
 En el anterior post ***[Autorización a Recursos: OAuth 2.0](./oauth2)*** se realizó una primera aproximación conceptual

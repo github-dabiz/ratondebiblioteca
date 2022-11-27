@@ -1,70 +1,108 @@
-# Site setings
-name: 'Ratón de Biblioteca'
-description: 'Ratón de Biblioteca es un blog dedicado al diseño de software en el ecosistema Java.'
-meta_description: 'programacion programación Java Spring patrones diseño arquitectura software metodologia metodología'
-logo: 'assets/images/logo.png'
-favicon: 'assets/images/favicon2.ico'
-baseurl: 
-production_url: http://www.ratondbiblioteca.com
-#disqus: 'justgoodthemes'
-#mailchimp_url: '//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117'
-cover_image: bc_1.jpg
-# Add your GA Tracking Id
-ga_analytics: 
+#-------------------------------
+# General Site Settings
+title: Ratón de Biblioteca
+#de momento no pongo logo, dejo solo el nombre
+#logo: '/images/logo.png'# You can add own logo. For example '/images/logo.png'.
+description: "Notas de programación, buenas prácticas y diseño de software"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://www.ratondbiblioteca.com" # the base hostname & protocol for your site, e.g. http://example.com
 
-
-# Author
+#-------------------------------
+# Author Settings
 author:
-  name: 'David Pérez'
-  image: 'author_box_image.jpg'
-  greetings: 'Ratón de Biblioteca'
-  description: "Notas de programación, buenas prácticas y diseño de software"
-  bio: 'Psicólogo de corazón, informático de profesión, llevo más de veinte años dedicado al desarrollo de software en los que me he especializado en el ecosistema Java/Spring'
+  name: David Pérez
+  bio: ""
+  avatar: '/images/author_box_image.jpg'
+#Foto de <a href="https://unsplash.com/@martinadams?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Martin Adams</a> en <a href="https://unsplash.com/es/fotos/_OZCl4XcpRw">Unsplash</a>
 
-# Contact form setings
-email: david.perez.rod@gmx.es
-contact_page_description: "Esteré encantado de recibir cualquier sugerencia, corrección, o propuesta. Si hay algo que quieras comentarme, ponte en contacto conmigo a través del siguiente formulario."
-thankyou_page_description: "Tu mensaje se envió correctamente."
+#  Foto de <a href="https://unsplash.com/@martinadams?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Martin Adams</a> en <a href="https://unsplash.com/es/fotos/qmlGWIaIgpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+#  Foto de <a href="https://unsplash.com/@jackson_films?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jackson Films</a> en <a href="https://unsplash.com/es/s/fotos/bookworm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+#  Foto de <a href="https://unsplash.com/@vladbahara?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Vladyslav Bahara</a> en <a href="https://unsplash.com/es/s/fotos/coffee-book?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+#  Foto de <a href="https://unsplash.com/@lilartsy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">lilartsy</a> en <a href="https://unsplash.com/es/@lilartsy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+#  Foto de <a href="https://unsplash.com/@martinadams?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Martin Adams</a> en <a href="https://unsplash.com/es/fotos/qmlGWIaIgpo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
-# Social links
-#twitter: 'username'
-#facebook: 'username'
-github: 'DavidPerezRod'
-#codepen: 'username'
-#dribbble: 'username'
-#medium: '@username'
-#instagram: 'username'
-#pinterest: 'username'
-linkedin: 'dabizme'
-#producthunt: '@username'
 
-# Navigation 
-navigation:
-  - text: About
-    url: /about/
-#  - text: Style Guide
-#    url: /style-guide/
-  - text: Contact Me
-    url: /contact/
 
-# Required Plugins
-plugins_dir:
-  - jekyll-paginate
-  - jekyll-tagsgenerator
-  - jekyll-seo-tag
-  - jekyll-sitemap
 
-# Pagination
-paginate: 5
-paginate_path: /page:num/
 
-# Permalinks
-permalink: /:title
 
-# Other
+social:
+#- {icon: "ion-logo-twitter", label: Twitter, link: "https://twitter.com"}
+#- {icon: "ion-logo-facebook", label: Facebook, link: "https://facebook.com"}
+#- {icon: "ion-logo-pinterest", label: Pinterest, link: "https://pinterest.com"}
+#- {icon: "ion-logo-dribbble", label: Dribbble, link: "https://dribbble.com"}
+#- {icon: "ion-logo-instagram", label: Instagram, link: "https://instagram.com"}
+#- {icon: "ion ion-logo-vimeo", label: Vimeo, link: "https://vimeo.com"}
+- {icon: "ion ion-logo-linkedin", label: Linkedin, link: "https://www.linkedin.com/in/dabizme/"}
+- {icon: "ion ion-logo-github", label: Github, link: "https://github.com/DavidPerezRod"}
+
+# Example of adding a new link to the author section and footer - {icon: "ion-logo-github", label: Github, link: "https://github.com"}
+# Other icons can be found at https://ionicons.com/v4/
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: "Ratón de Biblioteca"
+  hero__description: "Notas de programación, buenas prácticas y diseño de software"
+  hero__image: '/images/authorimage.jpg'
+
+
+#-------------------------------
+# Newsletter (_includes/footer-widgets/widget-subscribe.html)
+mailchimp: true # To enable the mailchimp form, use the value 'true'. To disable the form, use the value 'false' or leave the field blank.
+mailchimp__title: Get interesting news # Add your Title
+mailchimp__text: Subscribe to our newsletter and we’ll send you the emails of latest posts. # Add your description.
+mailchimp__identifier: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
+mailchimp__button__text: Join # Add your button text
+
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: your@email.com # Add your email for contact form
+  description: Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want. # Add a description of your form
+
+# NOTE
+# Joseph comes with a built-in contact form, that you can use with Formspree service to handle up to 50 submissions per month for free. You could also easily switch to another contact form service if you want.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: disqus_FH4KfQShrw # add your shortname for Disqus Comment. For example anvodstudio-demo
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1.
+
+
+#-------------------------------
+# Build Settings
 markdown: kramdown
+permalink: /:title
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll/tagging
 
-# Sass
+paginate: 5
+paginate_path: "/page/:num"
+
+# Pages Path
+defaults:
+  - scope:
+      path: '_pages'
+    values:
+      permalink: /:basename:output_ext
+
+include:
+  - _pages
+
+# Tags
+tag_page_dir:         tag
+tag_page_layout:      tag_page
+tag_permalink_style:  /:title
+
 sass:
   sass_dir: _sass
   style: compressed

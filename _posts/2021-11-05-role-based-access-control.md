@@ -1,10 +1,11 @@
 ---
 layout: post
 title:  "RBAC - Role based access Control"
+date:   2021-11-05 15:01:35 +0300
 tags: [ Seguridad ]
-featured_image_thumbnail: assets/images/posts/2021/20211105rbac/20211105_thumbnail.jpg
-featured_image: assets/images/posts/2021/20211105rbac/20211105.jpg
-featured: false
+image:  '/images/posts/2021/20211105rbac/20211105.jpg'
+description: El control de acceso basado en roles es un paradigma de seguridad que permite controlar las acciones que los usuarios de un sistema/organización pueden realizar sobre los recursos del mismo, en función de los privilegios por rol.
+comments: true
 ---
 El control de acceso basado en roles es un paradigma de seguridad que permite controlar las acciones que los usuarios de un sistema/organización pueden realizar sobre los recursos del mismo, en función de los privilegios por rol. Se basa en una estructura de tres niveles:
 
@@ -36,10 +37,7 @@ Por último, será necesario identificar el **_Ámbito_** al que se aplica el co
 * Derechos de acceso a aplicaciones
 * Autorización de solicitudes
 
-<figure>
- <img class="image-center" src="/assets/images/posts/2021/20211105rbac/20211105model-image.png" alt="modelo entidad-relación RBAC"/>
-<figcaption class="figure-caption">modelo entidad-relación RBAC</figcaption>
-</figure>
+![Workflow]({{site.baseurl}}/images/posts/2021/20211105rbac/20211105model-image.png)
 
 ### Asignación de permisos
 

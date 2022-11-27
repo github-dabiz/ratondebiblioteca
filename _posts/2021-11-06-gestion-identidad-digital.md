@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  "IdM - Gestión Identidad Digital"
+date:   2021-11-06 15:01:35 +0300
 tags: [ Seguridad, Identidad Digital, Transformación Digital ]
-featured_image_thumbnail: assets/images/posts/2021/20211106-gestion-identidad-digital/20211106_thumbnail.jpg
-featured_image: assets/images/posts/2021/20211106-gestion-identidad-digital/20211106.jpg
-featured: false
+image:  '/images/posts/2021/20211106-gestion-identidad-digital/20211106.jpg'
+description: IdM (Identity Management) por sus siglas en inglés, o también Gestión de Identidades y Accesos (IAM/IdAM Identity Access Management), es el marco de políticas y tecnologías que garantiza que solamente las personas autorizadas, y nadie más, tengan acceso a los recursos tecnológicos que necesitan para realizar su trabajo.
+comments: true
 ---
 
-***IdM (Identity Management)*** por sus siglas en inglés, o también ***Gestión de Identidades y Accesos (IAM/IdAM Identity Access Management)*** , es el marco de políticas y tecnologías que garantiza que solamente las personas autorizadas, y nadie más, tengan acceso a los recursos tecnológicos que necesitan para realizar su trabajo.
+***IdM (Identity Management)*** por sus siglas en inglés, o también ***Gestión de Identidades y Accesos (IAM/IdAM Identity Access Management)***, es el marco de políticas y tecnologías que garantiza que solamente las personas autorizadas, y nadie más, tengan acceso a los recursos tecnológicos que necesitan para realizar su trabajo.
 
 Esta gestión evita el acceso no autorizado a sistemas y recursos, ayuda a evitar el robo de datos, y genera alertas cuando personas o programas no autorizados intentan acceder a éstos. Pero las soluciones de gestión de identidades, no solo protegen el acceso al software y a los datos, también protegen los recursos hardware, redes, servidores, dispositivos de almacenamiento, etc.
 

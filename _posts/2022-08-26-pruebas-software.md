@@ -1,11 +1,12 @@
 ---
 layout: post
 title:  "Pruebas de Software: Tipología"
+date:   2022-08-26 15:01:35 +0300
 tags: [ QA, Testing ]
-featured_image_thumbnail: assets/images/posts/2022/20220826-pruebas-software/2022-08-26-pruebas-software-post-image-thumbnail.jpg
-featured_image: assets/images/posts/2022/20220826-pruebas-software/2022-08-26-pruebas-software-post-image.jpg
-hidden: false
-published: true
+image:  '/images/posts/2022/20220826-pruebas-software/2022-08-26-pruebas-software-post-image.jpg'
+description: Este post es el inicio de una serie en la que trataré de profundizar en los distintos tipos de pruebas de software, en cuanto a objetivos que persiguen, planteamiento, ejecución y otras características de interés. Como punto de partida, se va a exponer una categorización de pruebas de software que enlazará directamente con sus post específicos en los casos en los que aplique. En el resto de casos, simplemente quedarán indicadas en este post como parte de la jerarquía.
+hidden: true
+comments: true
 ---
 
 Este post es el inicio de una serie en la que trataré de profundizar en los distintos tipos de pruebas de software, en cuanto a objetivos que persiguen, planteamiento, ejecución y otras características de interés. Como punto de partida, se va a exponer una categorización de pruebas de software que enlazará directamente con sus post específicos en los casos en los que aplique. En el resto de casos, simplemente quedarán indicadas en este post como parte de la jerarquía.
