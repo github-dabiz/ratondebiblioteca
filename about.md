@@ -4,7 +4,6 @@ title: About
 featured_image: /assets/images/pages/about.jpg
 permalink: /about/
 ---
-
 Ratón de biblioteca es un blog dedicado al desarrollo backend Java, aunque esto no implica que esté dedicado exclusivamente al ecosistema Java.
 
 Como programador, hace tiempo que necesito estructurar notas, lecturas, código, etc., y finalmente me decidí por un blog.
