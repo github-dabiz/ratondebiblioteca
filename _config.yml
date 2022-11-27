@@ -68,7 +68,8 @@ contact:
 
 #-------------------------------
 # Comment Section (Disqus)
-disqus-identifier: disqus_FH4KfQShrw # add your shortname for Disqus Comment. For example anvodstudio-demo
+disqus-identifier: disqus_FH4KfQShrw
+# add your shortname for Disqus Comment. For example anvodstudio-demo
 
 
 #-------------------------------
