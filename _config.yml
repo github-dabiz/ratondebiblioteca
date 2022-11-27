@@ -5,7 +5,7 @@ title: Ratón de Biblioteca
 #logo: '/images/logo.png'# You can add own logo. For example '/images/logo.png'.
 description: "Notas de programación, buenas prácticas y diseño de software"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.ratondbiblioteca.com" # the base hostname & protocol for your site, e.g. http://example.com
+production_url: "http://www.ratondbiblioteca.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 #-------------------------------
 # Author Settings
