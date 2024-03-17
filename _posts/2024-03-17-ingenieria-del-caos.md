@@ -78,27 +78,29 @@ Atendiendo al propósito que siguen y el tipo de fallos o condiciones que simula
 1. **Inyectores de Fallos de Infraestructura:** Estas herramientas simulan fallos en componentes de hardware o 
    infraestructura, como servidores, redes y sistemas de almacenamiento. Pueden apagar máquinas, simular fallas en 
    discos duros, o introducir latencia en la red, por ejemplo. 
-   * Ejemplo: Chaos Monkey (Netflix), que aleatoriamente termina instancias de servicios para probar la resiliencia 
+   * Ejemplo: [Chaos Monkey (Netflix)](https://keepcoding.io/blog/que-es-chaos-monkey/#:~:text=de%20cualquier%20falla.-,%C2%BFQu%C3%A9%20es%20Chaos%20Monkey%3F,la%20estabilidad%20de%20la%20plataforma), que aleatoriamente termina instancias de servicios para probar la resiliencia 
    de los sistemas. 
 2. **Generadores de Carga y Estrés:** Tratan de probar cómo se comportan los sistemas bajo condiciones de carga 
    extrema o inusual, como picos de tráfico elevado o demanda de procesamiento.
-   * Ejemplo: Stress-ng, que impone cargas de trabajo diversas para estresar varios componentes del sistema. 
+   * Ejemplo: [Stress-ng](https://github.com/ColinIanKing/stress-ng), que impone cargas de trabajo diversas para estresar varios componentes del sistema. 
 3. **Simuladores de Latencia de Red y Particiones:** Permiten a los ingenieros probar cómo los sistemas se comportan 
    en condiciones de red adversas, incluyendo alta latencia, pérdida de paquetes, o desconexiones de red completas.
-   * Ejemplo: Toxiproxy (Shopify), que simula condiciones de red adversas. 
+   * Ejemplo: [Toxiproxy](https://github.com/Shopify/toxiproxy) (Shopify), que simula condiciones de red adversas. 
 4. **Herramientas de Estado de Aplicación Corrupto:** Simulan errores en el estado de la aplicación, como corrupción de 
    datos o fallos de caché, para ver cómo el sistema se recupera o maneja datos inconsistentes. 
-   * Ejemplo: SimianArmy (Netflix), incluye varias herramientas además de Chaos Monkey, que pueden introducir cambios en 
+   * Ejemplo: [SimianArmy (Netflix)](https://github.com/Netflix/SimianArmy), incluye varias herramientas además de Chaos Monkey, que pueden introducir 
+     cambios en 
       el estado de la configuración del sistema. 
 5. **Simuladores de Fallos de Dependencias Externas:** Orientadas a probar la resiliencia del sistema a fallos o 
    comportamientos inesperados de servicios externos o APIs de los que depende. 
-   * Ejemplo: Gremlin, que ofrece ataques dirigidos a simular fallos en servicios externos. 
+   * Ejemplo: [Gremlin](https://www.gremlin.com/), que ofrece ataques dirigidos a simular fallos en servicios externos. 
 6. **Plataformas de Orquestación de Experimentos de Caos:** Proporcionan un marco integral para planificar, ejecutar,
    y analizar experimentos de ingeniería del caos a escala, a menudo integrándose con sistemas de monitoreo y alerta 
    existentes.
-   * Ejemplo: Chaos Toolkit, que permite definir y ejecutar experimentos de caos contra una variedad de sistemas. 
+   * Ejemplo: [Chaos Toolkit](https://chaostoolkit.org/), que permite definir y ejecutar experimentos de caos contra una variedad de sistemas. 
 7. Herramientas de Análisis y Visualización: Aunque no realizan experimentos de caos por sí mismas, estas herramientas son cruciales para analizar los resultados de los experimentos y visualizar el impacto del caos en los sistemas. 
-   * Ejemplo: Kibana o Grafana, utilizadas para visualizar métricas y logs.
+   * Ejemplo: [Kibana](https://www.elastic.co/es/elastic-stack) o [Grafana](https://grafana.com/), utilizadas para visualizar métricas y 
+     logs.
 
 
 En definitiva la Ingeniería del Caos es una disciplina esencial en el desarrollo y operación de sistemas 
