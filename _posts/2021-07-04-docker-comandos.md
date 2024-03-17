@@ -4,7 +4,7 @@ title:  "Docker - Commands"
 date:   2021-07-04 22:55:35 +0300
 tags: [ Docker, Virtualización ]
 image:  '/images/posts/2021/20210704-docker-lo-basico/container-4203677.jpg'
-description: Los comandos docker permiten interactuar con contenedores y gestionar imágenes:
+description: Los comandos docker permiten interactuar con contenedores y gestionar imágenes
 comments: true
 ---
 
