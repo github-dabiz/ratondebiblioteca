@@ -4,7 +4,8 @@ title:  "Ingeniería del Caos"
 date:   2024-03-16 22:55:35 +0300
 tags: [ Docker, Virtualización ]
 image:  '/images/posts/2024/2024-03-17-ingenieria-del-caos/chaos-627218.jpg'
-description: Los comandos docker permiten interactuar con contenedores y gestionar imágenes
+description: El origen de la ingeniería del caos se podría situar hacia la década del 2010, fue popularizada por 
+   Netflix, al tratar de asegurar la disponibilidad y el rendimiento de su servicio de streaming a gran escala
 comments: true
 ---
 
@@ -101,8 +102,7 @@ Atendiendo al propósito que siguen y el tipo de fallos o condiciones que simula
 
 
 En definitiva la Ingeniería del Caos es una disciplina esencial en el desarrollo y operación de sistemas 
-resilientes 
-y confiables, enfocada en la introducción deliberada de condiciones adversas en los sistemas para mejorar su 
+resilientes y confiables, enfocada en la introducción deliberada de condiciones adversas en los sistemas para mejorar su 
 capacidad de recuperación y tolerancia a fallos. Originada y popularizada por empresas líderes en tecnología, esta 
 práctica se sustenta en principios bien definidos que guían la ejecución de experimentos controlados en entornos de 
 producción.
